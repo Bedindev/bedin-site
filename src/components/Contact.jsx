@@ -22,20 +22,53 @@ export default function Contact() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setBtnText('Enviando...')
     setBtnDisabled(true)
-    setTimeout(() => {
-      setBtnText('✓ Solicitação enviada!')
-      setBtnStyle({ background: '#25D366' })
+
+    const form = formElRef.current
+    const dados = {
+      nome: form.querySelector('#nome').value,
+      empresa: form.querySelector('#empresa').value,
+      telefone: form.querySelector('#tel').value,
+      email: form.querySelector('#email').value,
+      produtos: form.querySelector('#produtos').value,
+      quantidade: form.querySelector('#qtd').value,
+    }
+
+    try {
+      const res = await fetch('https://ebvwvzicdpvurmrpcgpd.supabase.co/functions/v1/form-webhook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVidnd2emljZHB2dXJtcnBjZ3BkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3NzcwNzYsImV4cCI6MjA4OTM1MzA3Nn0.q5vKDjAM1q9tn47rI17PEIsBvU8JMXv5BU4EbBJ4xe0',
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVidnd2emljZHB2dXJtcnBjZ3BkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3NzcwNzYsImV4cCI6MjA4OTM1MzA3Nn0.q5vKDjAM1q9tn47rI17PEIsBvU8JMXv5BU4EbBJ4xe0'
+        },
+        body: JSON.stringify(dados)
+      })
+      const data = await res.json()
+      if (data.success) {
+        setBtnText('✓ Solicitação enviada!')
+        setBtnStyle({ background: '#25D366' })
+        setTimeout(() => {
+          form.reset()
+          setBtnText('Enviar solicitação')
+          setBtnDisabled(false)
+          setBtnStyle({})
+        }, 3500)
+      } else {
+        throw new Error('Resposta sem sucesso')
+      }
+    } catch {
+      setBtnText('Erro — tente novamente')
+      setBtnStyle({ background: '#ef4444' })
       setTimeout(() => {
-        if (formElRef.current) formElRef.current.reset()
         setBtnText('Enviar solicitação')
         setBtnDisabled(false)
         setBtnStyle({})
-      }, 3500)
-    }, 1400)
+      }, 3000)
+    }
   }
 
   return (
