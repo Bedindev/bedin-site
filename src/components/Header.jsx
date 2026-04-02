@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const headerRef = useRef(null)
+  const location = useLocation()
+  const isHome = location.pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -39,10 +42,21 @@ export default function Header() {
           <img src="/logo vetorizado Bedin.png" alt="Bedin Representação" height="40" />
         </a>
         <nav className={`header__nav${menuOpen ? ' open' : ''}`} id="nav">
-          <a href="#sobre" onClick={e => handleNavClick(e, '#sobre')}>Sobre nós</a>
-          <a href="#produtos" onClick={e => handleNavClick(e, '#produtos')}>Produtos</a>
-          <a href="#diferenciais" onClick={e => handleNavClick(e, '#diferenciais')}>Diferenciais</a>
-          <a href="#cotacao" onClick={e => handleNavClick(e, '#cotacao')}>Cotação</a>
+          {isHome ? (
+            <>
+              <a href="#sobre" onClick={e => handleNavClick(e, '#sobre')}>Sobre nós</a>
+              <a href="#produtos" onClick={e => handleNavClick(e, '#produtos')}>Produtos</a>
+              <a href="#diferenciais" onClick={e => handleNavClick(e, '#diferenciais')}>Diferenciais</a>
+              <a href="#cotacao" onClick={e => handleNavClick(e, '#cotacao')}>Cotação</a>
+            </>
+          ) : (
+            <>
+              <Link to="/" onClick={closeMenu}>Início</Link>
+              <Link to="/#sobre" onClick={closeMenu}>Sobre nós</Link>
+              <Link to="/#cotacao" onClick={closeMenu}>Cotação</Link>
+            </>
+          )}
+          <Link to="/blog" onClick={closeMenu}>Blog</Link>
         </nav>
         <div className="header__actions">
           <a
