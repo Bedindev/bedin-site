@@ -12,7 +12,6 @@ import Footer from './components/Footer.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
 import Blog from './pages/Blog.jsx'
 import BlogPost from './pages/BlogPost.jsx'
-import Admin from './pages/Admin.jsx'
 
 function Home() {
   return (
@@ -39,7 +38,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   )
