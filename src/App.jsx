@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
@@ -9,8 +10,11 @@ import Reviews from './components/Reviews.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
+import Blog from './pages/Blog.jsx'
+import BlogPost from './pages/BlogPost.jsx'
+import Admin from './pages/Admin.jsx'
 
-function App() {
+function Home() {
   return (
     <>
       <Header />
@@ -25,6 +29,19 @@ function App() {
       <Footer />
       <WhatsAppFloat />
     </>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
