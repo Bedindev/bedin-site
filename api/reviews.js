@@ -28,7 +28,9 @@ export default async function handler(req, res) {
       totalReviews: data.userRatingCount,
       reviews: (data.reviews || []).map((r) => ({
         name: r.authorAttribution?.displayName || 'Anônimo',
-        photoUrl: r.authorAttribution?.photoUri || null,
+        photoUrl: r.authorAttribution?.photoUri
+          ? r.authorAttribution.photoUri.replace(/^\/\//, 'https://')
+          : null,
         rating: r.rating,
         text: r.originalText?.text || r.text?.text || '',
         date: r.relativePublishTimeDescription || '',
