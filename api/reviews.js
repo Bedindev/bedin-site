@@ -5,6 +5,10 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400')
 
+  if (!API_KEY) {
+    return res.status(500).json({ error: 'API key not configured' })
+  }
+
   try {
     const response = await fetch(
       `https://places.googleapis.com/v1/places/${PLACE_ID}`,
@@ -18,7 +22,8 @@ export default async function handler(req, res) {
     )
 
     if (!response.ok) {
-      throw new Error(`Google API error: ${response.status}`)
+      const errorBody = await response.text()
+      throw new Error(`Google API error: ${response.status} - ${errorBody}`)
     }
 
     const data = await response.json()
@@ -39,6 +44,6 @@ export default async function handler(req, res) {
     })
   } catch (error) {
     console.error('Reviews API error:', error)
-    res.status(500).json({ error: 'Failed to fetch reviews' })
+    res.status(500).json({ error: 'Failed to fetch reviews', details: error.message })
   }
 }
