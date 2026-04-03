@@ -80,7 +80,7 @@ export default function Reviews() {
       .then(data => {
         if (data.reviews && data.reviews.length > 0) {
           setReviewData({
-            reviews: data.reviews.filter(r => r.text && r.text.length > 10).map(r => ({
+            reviews: data.reviews.map(r => ({
               name: r.name,
               photoUrl: r.photoUrl,
               date: translateDate(r.date),
