@@ -1,55 +1,66 @@
 import { useEffect, useRef, useState } from 'react'
 
-const reviews = [
+const fallbackReviews = [
   {
-    initials: 'CB',
     name: 'Cristiane Bellé',
     date: 'um ano atrás',
-    text: '"Minha experiência com a Bedin Representações foi excepcional em todos os aspectos. Desde o primeiro contato, fui recebida com um atendimento impecável. Empresa totalmente transparente, honesta e comprometida em oferecer as melhores soluções."'
+    rating: 5,
+    text: 'Minha experiência com a Bedin Representações foi excepcional em todos os aspectos. Desde o primeiro contato, fui recebida com um atendimento impecável. Empresa totalmente transparente, honesta e comprometida em oferecer as melhores soluções.'
   },
   {
-    initials: 'FT',
     name: 'Fernanda Tramontin',
     date: 'um ano atrás',
-    text: '"Representantes atenciosos e prestativos! A Tainá cuida do nosso atendimento com muito carinho, sempre esclarecendo dúvidas e oferecendo ótimas opções de produtos. Até presente de aniversário ela enviou! Muito satisfeita."'
+    rating: 5,
+    text: 'Representantes atenciosos e prestativos! A Tainá cuida do nosso atendimento com muito carinho, sempre esclarecendo dúvidas e oferecendo ótimas opções de produtos. Até presente de aniversário ela enviou! Muito satisfeita.'
   },
   {
-    initials: 'RS',
-    name: 'Rodrigo Schmidt',
-    date: 'um ano atrás',
-    text: '"Empresa séria, comprometida e com um atendimento excepcional! Sempre fomos muito bem atendidos pela Tainá, que é ágil, prestativa e está sempre disposta a nos ajudar."'
-  },
-  {
-    initials: 'GS',
-    name: 'Gabriel Silva',
-    date: 'um ano atrás',
-    text: '"Experiência sensacional com a Bedin, atendimento ultra-especializado. Já faço negócios há 2 anos. Indico sem medo!!!"'
-  },
-  {
-    initials: 'AF',
-    name: 'Alessandro Ferreira',
-    date: 'um ano atrás',
-    text: '"Sobre a Bedin representação, só tenho uma palavra: gratidão! Há anos tenho parceria com eles e sempre foram muito atenciosos, competentes e prestam um serviço de excelência!"'
-  },
-  {
-    initials: 'CA',
-    name: 'Camilly Almeida',
-    date: 'um ano atrás',
-    text: '"Os colaboradores são dedicados e atenciosos. Os produtos naturais são de ótima qualidade, dá para sentir o cuidado em cada detalhe. Continuem assim!"'
-  },
-  {
-    initials: 'SA',
     name: 'Steffani Amaral',
     date: '9 meses atrás',
-    text: '"Empresa abençoada, equipe de colaboradores prestativos e eficientes, tendo um atendimento excelente e comprometimento com os clientes!"'
+    rating: 5,
+    text: 'Empresa abençoada, equipe de colaboradores prestativos e eficientes, tendo um atendimento excelente e comprometimento com os clientes!'
   },
   {
-    initials: 'RC',
-    name: 'Raquel Córdova',
+    name: 'Rodrigo Schmidt',
     date: 'um ano atrás',
-    text: '"O diferencial da Bedin é ter valores e princípios como pilar de sustentação, o que a faz ser destaque. Produtos de ótima qualidade e atendimento impecável!"'
+    rating: 5,
+    text: 'Empresa séria, comprometida e com um atendimento excepcional! Sempre fomos muito bem atendidos pela Tainá, que é ágil, prestativa e está sempre disposta a nos ajudar.'
+  },
+  {
+    name: 'Alessandro Ferreira',
+    date: 'um ano atrás',
+    rating: 5,
+    text: 'Sobre a Bedin representação, só tenho uma palavra: gratidão! Há anos tenho parceria com eles e sempre foram muito atenciosos, competentes e prestam um serviço de excelência!'
   },
 ]
+
+const fallbackRating = 4.9
+const fallbackTotal = 234
+
+function getInitials(name) {
+  return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+}
+
+function renderStars(rating) {
+  return '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating))
+}
+
+function translateDate(dateStr) {
+  const map = {
+    'a year ago': 'um ano atrás',
+    'years ago': 'anos atrás',
+    'a month ago': 'um mês atrás',
+    'months ago': 'meses atrás',
+    'a week ago': 'uma semana atrás',
+    'weeks ago': 'semanas atrás',
+    'a day ago': 'um dia atrás',
+    'days ago': 'dias atrás',
+  }
+  let result = dateStr
+  for (const [en, pt] of Object.entries(map)) {
+    result = result.replace(en, pt)
+  }
+  return result
+}
 
 export default function Reviews() {
   const headerRef = useRef(null)
@@ -57,6 +68,34 @@ export default function Reviews() {
   const carouselRef = useRef(null)
   const wrapRef = useRef(null)
   const [index, setIndex] = useState(0)
+  const [reviewData, setReviewData] = useState({
+    reviews: fallbackReviews,
+    rating: fallbackRating,
+    totalReviews: fallbackTotal,
+  })
+
+  useEffect(() => {
+    fetch('/api/reviews')
+      .then(res => res.json())
+      .then(data => {
+        if (data.reviews && data.reviews.length > 0) {
+          setReviewData({
+            reviews: data.reviews.filter(r => r.text && r.text.length > 10).map(r => ({
+              name: r.name,
+              photoUrl: r.photoUrl,
+              date: translateDate(r.date),
+              rating: r.rating,
+              text: r.text,
+            })),
+            rating: data.rating || fallbackRating,
+            totalReviews: data.totalReviews || fallbackTotal,
+          })
+        }
+      })
+      .catch(() => {})
+  }, [])
+
+  const reviews = reviewData.reviews
   const total = reviews.length
 
   const getVisible = () => {
@@ -77,7 +116,7 @@ export default function Reviews() {
 
   useEffect(() => {
     update(index)
-  }, [index])
+  }, [index, reviews])
 
   useEffect(() => {
     const handleResize = () => {
@@ -88,7 +127,7 @@ export default function Reviews() {
     }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [index])
+  }, [index, total])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,6 +146,8 @@ export default function Reviews() {
   const visible = getVisible()
   const prevDisabled = index === 0
   const nextDisabled = index >= total - visible
+
+  const scoreFormatted = String(reviewData.rating).replace('.', ',')
 
   return (
     <section className="reviews section">
@@ -128,8 +169,8 @@ export default function Reviews() {
             </div>
             <div className="reviews__panel-label">EXCELENTE</div>
             <div className="reviews__panel-stars">★★★★★</div>
-            <div className="reviews__panel-score">4,9</div>
-            <div className="reviews__panel-count">Baseado em <strong>234 avaliações</strong></div>
+            <div className="reviews__panel-score">{scoreFormatted}</div>
+            <div className="reviews__panel-count">Baseado em <strong>{reviewData.totalReviews} avaliações</strong></div>
             <a
               href="https://share.google/ZdruFz4KpnQ1jW6iw"
               target="_blank"
@@ -144,13 +185,17 @@ export default function Reviews() {
               {reviews.map((r, i) => (
                 <div className="review-card" key={i}>
                   <div className="review-card__header">
-                    <div className="review-avatar">{r.initials}</div>
+                    {r.photoUrl ? (
+                      <img className="review-avatar-img" src={r.photoUrl} alt={r.name} referrerPolicy="no-referrer" />
+                    ) : (
+                      <div className="review-avatar">{getInitials(r.name)}</div>
+                    )}
                     <div>
                       <strong>{r.name}</strong>
                       <span className="review-date">{r.date}</span>
                     </div>
                   </div>
-                  <div className="review-stars">★★★★★</div>
+                  <div className="review-stars">{renderStars(r.rating)}</div>
                   <p>{r.text}</p>
                 </div>
               ))}
