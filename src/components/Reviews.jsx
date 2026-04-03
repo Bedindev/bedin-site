@@ -131,7 +131,7 @@ export default function Reviews() {
             <div className="reviews__panel-score">4,9</div>
             <div className="reviews__panel-count">Baseado em <strong>234 avaliações</strong></div>
             <a
-              href="https://g.co/kgs/bedinrepresentacao"
+              href="https://share.google/ZdruFz4KpnQ1jW6iw"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-filled reviews__panel-btn"
