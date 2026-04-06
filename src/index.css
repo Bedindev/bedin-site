@@ -913,7 +913,7 @@ ul { list-style: none; }
 }
 .reviews__carousel {
   display: flex;
-  gap: var(--s6);
+  gap: 20px;
   transition: transform 400ms cubic-bezier(.4,0,.2,1);
 }
 .review-card {

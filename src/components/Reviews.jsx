@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 
 const fallbackReviews = [
   {
@@ -67,6 +67,7 @@ export default function Reviews() {
   const layoutRef = useRef(null)
   const carouselRef = useRef(null)
   const wrapRef = useRef(null)
+  const autoplayRef = useRef(null)
   const [index, setIndex] = useState(0)
   const [reviewData, setReviewData] = useState({
     reviews: fallbackReviews,
@@ -79,17 +80,22 @@ export default function Reviews() {
       .then(res => res.json())
       .then(data => {
         if (data.reviews && data.reviews.length > 0) {
-          setReviewData({
-            reviews: data.reviews.map(r => ({
+          const filtered = data.reviews
+            .filter(r => r.text && r.text.length > 20)
+            .map(r => ({
               name: r.name,
               photoUrl: r.photoUrl,
               date: translateDate(r.date),
               rating: r.rating,
               text: r.text,
-            })),
-            rating: data.rating || fallbackRating,
-            totalReviews: data.totalReviews || fallbackTotal,
-          })
+            }))
+          if (filtered.length > 0) {
+            setReviewData({
+              reviews: filtered,
+              rating: data.rating || fallbackRating,
+              totalReviews: data.totalReviews || fallbackTotal,
+            })
+          }
         }
       })
       .catch(() => {})
@@ -98,36 +104,65 @@ export default function Reviews() {
   const reviews = reviewData.reviews
   const total = reviews.length
 
-  const getVisible = () => {
+  const getVisible = useCallback(() => {
     if (!wrapRef.current) return 3
     const w = wrapRef.current.offsetWidth
     if (w < 600) return 1
     if (w < 1024) return 2
     return 3
-  }
+  }, [])
 
-  const update = (idx) => {
+  const update = useCallback((idx) => {
     if (!carouselRef.current || !wrapRef.current) return
     const visible = getVisible()
     const gap = 20
     const cardW = (wrapRef.current.offsetWidth - gap * (visible - 1)) / visible
     carouselRef.current.style.transform = `translateX(-${idx * (cardW + gap)}px)`
-  }
+  }, [getVisible])
 
   useEffect(() => {
     update(index)
-  }, [index, reviews])
+  }, [index, reviews, update])
 
   useEffect(() => {
     const handleResize = () => {
       const v = getVisible()
-      const safeIdx = Math.max(0, Math.min(index, total - v))
+      const maxIdx = Math.max(0, total - v)
+      const safeIdx = Math.min(index, maxIdx)
       if (safeIdx !== index) setIndex(safeIdx)
       else update(safeIdx)
     }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [index, total])
+  }, [index, total, getVisible, update])
+
+  // Autoplay
+  useEffect(() => {
+    const startAutoplay = () => {
+      autoplayRef.current = setInterval(() => {
+        setIndex(prev => {
+          const v = getVisible()
+          const maxIdx = Math.max(0, total - v)
+          return prev >= maxIdx ? 0 : prev + 1
+        })
+      }, 5000)
+    }
+
+    startAutoplay()
+    return () => clearInterval(autoplayRef.current)
+  }, [total, getVisible])
+
+  const handleManualNav = (newIndex) => {
+    clearInterval(autoplayRef.current)
+    setIndex(newIndex)
+    autoplayRef.current = setInterval(() => {
+      setIndex(prev => {
+        const v = getVisible()
+        const maxIdx = Math.max(0, total - v)
+        return prev >= maxIdx ? 0 : prev + 1
+      })
+    }, 5000)
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -202,7 +237,7 @@ export default function Reviews() {
             </div>
             <button
               className="reviews__arrow reviews__arrow--prev"
-              onClick={() => setIndex(i => Math.max(0, i - 1))}
+              onClick={() => handleManualNav(Math.max(0, index - 1))}
               disabled={prevDisabled}
               aria-label="Anterior"
             >
@@ -212,7 +247,7 @@ export default function Reviews() {
             </button>
             <button
               className="reviews__arrow reviews__arrow--next"
-              onClick={() => setIndex(i => Math.min(total - getVisible(), i + 1))}
+              onClick={() => handleManualNav(Math.min(total - getVisible(), index + 1))}
               disabled={nextDisabled}
               aria-label="Próximo"
             >
