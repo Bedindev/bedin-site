@@ -849,7 +849,7 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 240px 1fr;
   gap: var(--s12);
-  align-items: center;
+  align-items: start;
   margin-top: var(--s10);
 }
 
@@ -969,6 +969,10 @@ ul { list-style: none; }
   color: var(--on-surface-variant);
   line-height: 1.7;
   font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .reviews__arrow {

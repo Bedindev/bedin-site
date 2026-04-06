@@ -80,7 +80,7 @@ export default function Reviews() {
       .then(res => res.json())
       .then(data => {
         if (data.reviews && data.reviews.length > 0) {
-          const filtered = data.reviews
+          const apiReviews = data.reviews
             .filter(r => r.text && r.text.length > 20)
             .map(r => ({
               name: r.name,
@@ -89,13 +89,15 @@ export default function Reviews() {
               rating: r.rating,
               text: r.text,
             }))
-          if (filtered.length > 0) {
-            setReviewData({
-              reviews: filtered,
-              rating: data.rating || fallbackRating,
-              totalReviews: data.totalReviews || fallbackTotal,
-            })
-          }
+          // Combine API reviews with fallbacks (avoid duplicates by name)
+          const apiNames = new Set(apiReviews.map(r => r.name))
+          const extra = fallbackReviews.filter(r => !apiNames.has(r.name))
+          const combined = [...apiReviews, ...extra]
+          setReviewData({
+            reviews: combined,
+            rating: data.rating || fallbackRating,
+            totalReviews: data.totalReviews || fallbackTotal,
+          })
         }
       })
       .catch(() => {})
