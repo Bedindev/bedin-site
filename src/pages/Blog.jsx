@@ -97,8 +97,12 @@ export default function Blog() {
               ) : (
                 posts.map(post => (
                   <Link to={`/blog/${post.slug}`} key={post.id} className="blog-card">
-                    <div className="blog-card__img-placeholder">
-                      <span>Bedin Representação</span>
+                    <div className="blog-card__cover">
+                      <div className="blog-card__cover-top">
+                        <span className="blog-card__cover-year">{new Date(post.created_at).getFullYear()}</span>
+                        <img className="blog-card__cover-logo" src="/logo vetorizado Bedin.png" alt="Bedin" />
+                      </div>
+                      <h3 className="blog-card__cover-title">{post.category || 'Blog'}</h3>
                     </div>
                     <div className="blog-card__body">
                       <h2>{post.title}</h2>

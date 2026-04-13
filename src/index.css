@@ -1246,7 +1246,8 @@ a.ch-card:hover {
 .blog-sidebar h3 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; color: var(--text-1); }
 .blog-sidebar ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
 .blog-sidebar button { background: none; border: none; cursor: pointer; text-align: left; padding: 6px 12px; border-radius: 8px; color: var(--text-2); font-size: 0.95rem; width: 100%; transition: all 0.2s; }
-.blog-sidebar button:hover, .blog-sidebar button.active { background: var(--accent); color: #fff; }
+.blog-sidebar button:hover { background: var(--accent-light, #e8f5e9); color: var(--accent); }
+.blog-sidebar button.active { background: var(--primary); color: #fff; }
 
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 @media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -1254,7 +1255,29 @@ a.ch-card:hover {
 
 .blog-card { text-decoration: none; color: inherit; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
 .blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.10); transform: translateY(-3px); }
-.blog-card__img-placeholder { background: var(--accent); height: 160px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.9rem; padding: 16px; text-align: center; }
+.blog-card__cover {
+  position: relative; height: 200px; overflow: hidden;
+  background: #f6f9f0;
+  background-image:
+    radial-gradient(ellipse 70% 90% at 10% 15%, rgba(137,180,36,0.5) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 35% 5%, rgba(137,180,36,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 55% at 0% 55%, rgba(106,140,26,0.2) 0%, transparent 50%);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 20px 22px;
+}
+.blog-card__cover-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.blog-card__cover-year {
+  font-size: 0.85rem; font-weight: 700; color: var(--text-1); opacity: 0.65;
+}
+.blog-card__cover-logo {
+  height: 36px; width: auto; opacity: 0.6;
+}
+.blog-card__cover-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; color: var(--text-1);
+  line-height: 1.05; letter-spacing: -0.03em; margin: 0;
+}
 .blog-card__body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
 .blog-card__body h2 { font-size: 1rem; font-weight: 700; color: var(--text-1); line-height: 1.4; margin: 0; }
 .blog-card__body p { font-size: 0.9rem; color: var(--text-2); margin: 0; flex: 1; }
