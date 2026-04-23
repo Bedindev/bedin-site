@@ -1036,7 +1036,7 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--s16);
-  align-items: start;
+  align-items: stretch;
 }
 .contact__left {
   background: var(--surface-container);
