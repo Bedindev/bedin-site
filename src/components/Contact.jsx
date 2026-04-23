@@ -63,10 +63,11 @@ export default function Contact() {
         <div className="contact__grid">
           <div className="contact__left reveal" ref={leftRef}>
             <div>
-              <span className="label">Fale com a curadoria</span>
+              <span className="label">Fale conosco</span>
               <h2 className="sec-title" style={{ textAlign: 'left' }}>
-                Cotação em <span className="accent">24 horas úteis</span>.
+                Solicite sua<br /><span className="accent">cotação gratuita</span>
               </h2>
+              <p className="contact__sub">Preencha o formulário ou entre em contato diretamente. Respondemos em até 24 horas úteis.</p>
             </div>
             <div className="channels">
               <a href="https://wa.me/5548998680025?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Bedin!" target="_blank" rel="noopener noreferrer" className="ch-card">
@@ -85,6 +86,14 @@ export default function Contact() {
                 </div>
                 <div><strong>Telefone</strong><span>(48) 99861-1350</span></div>
               </a>
+              <div className="ch-card">
+                <div className="ch-icon warm">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div><strong>Localização</strong><span>Biguaçu, SC — atendimento nacional</span></div>
+              </div>
             </div>
           </div>
           <div className="form-card reveal" ref={formRef}>
