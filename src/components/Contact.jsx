@@ -61,11 +61,14 @@ export default function Contact() {
     <section className="contact section" id="cotacao">
       <div className="container">
         <div className="contact__grid">
-          <div className="reveal" ref={leftRef}>
-            <span className="label">Fale conosco</span>
-            <h2 className="sec-title" style={{ textAlign: 'left' }}>Solicite sua<br /><span className="accent">cotação gratuita</span></h2>
-            <p className="contact__sub">Preencha o formulário ou entre em contato diretamente. Respondemos em até 24 horas úteis.</p>
-            <div className="contact__channels">
+          <div className="contact__left reveal" ref={leftRef}>
+            <div>
+              <span className="label">Fale com a curadoria</span>
+              <h2 className="sec-title" style={{ textAlign: 'left' }}>
+                Cotação em <span className="accent">24 horas úteis</span>.
+              </h2>
+            </div>
+            <div className="channels">
               <a href="https://wa.me/5548998680025?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Bedin!" target="_blank" rel="noopener noreferrer" className="ch-card">
                 <div className="ch-icon green">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -74,22 +77,14 @@ export default function Contact() {
                 </div>
                 <div><strong>WhatsApp</strong><span>(48) 99868-0025</span></div>
               </a>
-              <a href="tel:+554899861-1350" className="ch-card">
-                <div className="ch-icon tonal">
+              <a href="tel:+5548998611350" className="ch-card">
+                <div className="ch-icon primary">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
                   </svg>
                 </div>
                 <div><strong>Telefone</strong><span>(48) 99861-1350</span></div>
               </a>
-              <div className="ch-card">
-                <div className="ch-icon warm">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-                  </svg>
-                </div>
-                <div><strong>Localização</strong><span>Biguaçu, SC</span></div>
-              </div>
             </div>
           </div>
           <div className="form-card reveal" ref={formRef}>

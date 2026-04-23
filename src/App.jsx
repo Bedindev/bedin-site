@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
@@ -40,6 +41,7 @@ function App() {
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   )
 }
