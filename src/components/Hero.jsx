@@ -54,9 +54,6 @@ export default function Hero() {
             </a>
             <a href="#suppliers" className="btn btn-ghost-white" onClick={e => handleScroll(e, '.suppliers')}>Ver as 30 marcas representadas</a>
           </div>
-          <p className="hero__quote">
-            <em>"Há anos tenho parceria com eles e sempre foram muito atenciosos."</em> — Alessandro Ferreira, cliente Bedin.
-          </p>
         </div>
         <div className="hero__visual">
           <div className="hero__img-wrap reveal" ref={revealRef}>
