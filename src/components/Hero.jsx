@@ -38,7 +38,7 @@ export default function Hero() {
           </h1>
           <p className="hero__subtitle">
             São 30 marcas, mais de 1.000 produtos e uma equipe de 12 pessoas atrás de cada pedido.
-            234 lojistas dão a nota 4,9 no Google. Você manda no WhatsApp e a gente devolve cotação em até 24h.
+            Centenas de lojistas dão a nota 4,9 no Google. Você manda no WhatsApp e a gente devolve cotação em até 24h.
           </p>
           <div className="hero__ctas">
             <a

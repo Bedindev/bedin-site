@@ -64,8 +64,8 @@ export default function Stats() {
         </div>
         <div className="stats__grid">
           <RevealWrapper>
-            <Counter target={234} />
-            <div className="stat-label">Avaliações 4,9 estrelas no Google</div>
+            <div className="stat-val">4,9<span className="stat-suffix">★</span></div>
+            <div className="stat-label">Nota no Google · centenas de avaliações</div>
           </RevealWrapper>
           <RevealWrapper>
             <Counter target={1000} suffix="+" />

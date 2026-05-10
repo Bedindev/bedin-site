@@ -80,7 +80,7 @@ export default function Features() {
         </svg>
       ),
       title: 'Atendimento que tem nome',
-      desc: 'Tainá, Jean, Juli e o time de 12 pessoas. Você não fala com bot. Você fala com gente que sabe o nome da sua loja e o que você comprou no mês passado.'
+      desc: 'Jean, Juli e o time de 12 pessoas. Você não fala com bot. Você fala com gente que sabe o nome da sua loja e o que você comprou no mês passado.'
     },
     {
       icon: (

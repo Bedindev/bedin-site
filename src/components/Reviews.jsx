@@ -191,7 +191,7 @@ export default function Reviews() {
       <div className="container">
         <div className="sec-header reveal" ref={headerRef}>
           <span className="label">A verdade vem dos lojistas</span>
-          <h2 className="sec-title"><span className="accent">234 avaliações no Google.</span> Nota 4,9. Sem campanha. Sem combinação.</h2>
+          <h2 className="sec-title"><span className="accent">Centenas de avaliações no Google.</span> Nota 4,9. Sem campanha. Sem combinação.</h2>
           <p className="sec-sub"><em>Empresa séria não precisa dizer que é. Os clientes dizem por ela.</em></p>
         </div>
         <div className="reviews__layout reveal" ref={layoutRef}>
@@ -208,7 +208,7 @@ export default function Reviews() {
             <div className="reviews__panel-label">EXCELENTE</div>
             <div className="reviews__panel-stars">★★★★★</div>
             <div className="reviews__panel-score">{scoreFormatted}</div>
-            <div className="reviews__panel-count">Baseado em <strong>{reviewData.totalReviews} avaliações</strong></div>
+            <div className="reviews__panel-count">Baseado em <strong>centenas de avaliações</strong></div>
             <a
               href="https://share.google/ZdruFz4KpnQ1jW6iw"
               target="_blank"

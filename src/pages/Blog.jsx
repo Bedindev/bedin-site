@@ -63,7 +63,7 @@ export default function Blog() {
           <div className="blog-hero">
             <span className="label">Conteúdo pra quem tem loja</span>
             <h1 className="sec-title">Blog <span className="accent">Bedin</span> · o que ninguém te conta sobre vender produto natural</h1>
-            <p>Dicas práticas, análises de mercado e estratégias reais que aplicamos com nossos 234 lojistas-parceiros.</p>
+            <p>Dicas práticas, análises de mercado e estratégias reais que aplicamos com nossos lojistas-parceiros.</p>
           </div>
           <div className="blog-layout">
             <aside className="blog-sidebar">

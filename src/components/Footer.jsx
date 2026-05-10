@@ -66,7 +66,7 @@ export default function Footer() {
         <div className="footer__bottom">
           <p>&copy; 2024 Bedin Representação. Todos os direitos reservados.</p>
           <p>Família Bedin · Biguaçu, SC · Atendimento Brasil</p>
-          <p><em>4,9 estrelas no Google · 234 lojistas confiam.</em></p>
+          <p><em>4,9 estrelas no Google · centenas de lojistas confiam.</em></p>
         </div>
       </div>
     </footer>

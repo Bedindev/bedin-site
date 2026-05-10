@@ -39,7 +39,7 @@ const timeline = [
   {
     year: '2020',
     title: 'Time cresce, atendimento humaniza',
-    text: 'Tainá entra pra cuidar de relacionamento com lojistas. A regra interna passa a ser uma só: cada cliente sabe o nome de quem o atende, e quem atende sabe o nome da loja.'
+    text: 'O time cresce e o atendimento humaniza. A regra interna passa a ser uma só: cada cliente sabe o nome de quem o atende, e quem atende sabe o nome da loja.'
   },
   {
     year: '2023',
@@ -49,18 +49,18 @@ const timeline = [
   {
     year: '2026',
     title: 'Onde estamos hoje',
-    text: '12 pessoas no time. 30 marcas representadas. Mais de 1.000 produtos no catálogo. 234 avaliações reais no Google com nota 4,9. Atendimento em todo o Brasil.'
+    text: '12 pessoas no time. 30 marcas representadas. Mais de 1.000 produtos no catálogo. Centenas de avaliações reais no Google com nota 4,9. Atendimento em todo o Brasil.'
   }
 ]
 
 const valores = [
-  { nome: 'Servir', frase: 'Você vem antes da venda. Sempre.' },
-  { nome: 'Pontualidade', frase: 'Pedido sai na data combinada. Sem desculpa.' },
-  { nome: 'Ética', frase: 'Mesmo preço, mesma condição, com ou sem você olhando.' },
-  { nome: 'Autoresponsabilidade', frase: 'Erro nosso é problema nosso. Você não paga por ele.' },
-  { nome: 'Proatividade', frase: 'A gente avisa antes do estoque acabar.' },
-  { nome: 'Meritocracia', frase: 'Quem trabalha melhor pra você é quem te atende.' },
-  { nome: 'Gratidão', frase: 'Cada lojista que confia na gente é razão pra fazer melhor amanhã.' }
+  { nome: 'Servir' },
+  { nome: 'Pontualidade' },
+  { nome: 'Ética' },
+  { nome: 'Autoresponsabilidade' },
+  { nome: 'Proatividade' },
+  { nome: 'Meritocracia' },
+  { nome: 'Gratidão' }
 ]
 
 export default function Sobre() {
@@ -84,7 +84,7 @@ export default function Sobre() {
                 A história de uma família que escolheu <span className="accent">servir antes de vender</span>.
               </h1>
               <p className="sobre-hero__sub">
-                Dez anos atrás éramos duas pessoas com uma decisão. Hoje somos 12, com 30 marcas representadas, mais de 1.000 produtos no catálogo e 234 lojistas que avaliaram nosso trabalho com nota 4,9 no Google.
+                Dez anos atrás éramos duas pessoas com uma decisão. Hoje somos 12, com 30 marcas representadas, mais de 1.000 produtos no catálogo e centenas de lojistas que avaliaram nosso trabalho com nota 4,9 no Google.
               </p>
             </div>
             <div className="sobre-hero__visual">
@@ -152,7 +152,6 @@ export default function Sobre() {
               {valores.map((v, i) => (
                 <Reveal key={i} className="valor-card">
                   <h3>{v.nome}</h3>
-                  <p>{v.frase}</p>
                 </Reveal>
               ))}
             </div>
