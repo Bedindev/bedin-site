@@ -53,8 +53,8 @@ export default function Suppliers() {
     <section className="suppliers">
       <div className="suppliers__header reveal" ref={headerRef}>
         <span className="label">Quem está por trás da sua gôndola</span>
-        <h2 className="sec-title"><span className="accent">30 marcas selecionadas.</span> Uma curadoria construída em 10 anos.</h2>
-        <p className="sec-sub">Cada marca foi escolhida por qualidade comprovada, regularidade de entrega e potencial de giro no varejo natural. Você compra de quem a gente compraria.</p>
+        <h2 className="sec-title"><span className="accent">+30 fornecedores selecionados.</span> Uma curadoria construída em 10 anos.</h2>
+        <p className="sec-sub">Cada fornecedor foi escolhido por qualidade comprovada, regularidade de entrega e potencial de giro no varejo natural. Você compra de quem a gente compraria.</p>
       </div>
       <div className="marquee-wrap">
         <div className="marquee-track">
@@ -76,12 +76,12 @@ export default function Suppliers() {
       </div>
       <div className="suppliers__cta">
         <a
-          href="https://wa.me/5548998680025?text=Ol%C3%A1%20Bedin%2C%20quero%20receber%20a%20lista%20completa%20das%2030%20marcas%20representadas!"
+          href="https://wa.me/5548998680025?text=Ol%C3%A1%20Bedin%2C%20quero%20receber%20a%20lista%20completa%20dos%20fornecedores%20parceiros!"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-filled large"
         >
-          Receber a lista completa das 30 marcas no WhatsApp
+          Receber a lista completa dos fornecedores no WhatsApp
         </a>
       </div>
     </section>

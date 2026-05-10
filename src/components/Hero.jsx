@@ -37,8 +37,8 @@ export default function Hero() {
             A sua loja natural merece <span className="accent">uma representante que se importa</span>.
           </h1>
           <p className="hero__subtitle">
-            São 30 marcas, mais de 1.000 produtos e uma equipe de 12 pessoas atrás de cada pedido.
-            Centenas de lojistas dão a nota 4,9 no Google. Você manda no WhatsApp e a gente devolve cotação em até 24h.
+            Mais de 30 fornecedores parceiros, mais de 1.000 produtos e um time de 12 pessoas que atende +200 empresas todo mês.
+            Nota 4,9 no Google com centenas de avaliações reais. Você manda no WhatsApp e a gente devolve cotação em até 24h.
           </p>
           <div className="hero__ctas">
             <a
@@ -52,7 +52,7 @@ export default function Hero() {
               </svg>
               Falar com a Bedin no WhatsApp
             </a>
-            <a href="#suppliers" className="btn btn-ghost-white" onClick={e => handleScroll(e, '.suppliers')}>Ver as 30 marcas representadas</a>
+            <a href="#suppliers" className="btn btn-ghost-white" onClick={e => handleScroll(e, '.suppliers')}>Ver os fornecedores parceiros</a>
           </div>
         </div>
         <div className="hero__visual">

@@ -73,11 +73,11 @@ export default function Stats() {
           </RevealWrapper>
           <RevealWrapper>
             <Counter target={30} />
-            <div className="stat-label">Marcas representadas</div>
+            <div className="stat-label">Fornecedores parceiros</div>
           </RevealWrapper>
           <RevealWrapper>
-            <Counter target={12} />
-            <div className="stat-label">Pessoas no time da Bedin</div>
+            <Counter target={200} prefix="+" />
+            <div className="stat-label">Empresas atendidas todo mês</div>
           </RevealWrapper>
         </div>
       </div>

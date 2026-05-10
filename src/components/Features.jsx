@@ -45,8 +45,8 @@ export default function Features() {
           <polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
       ),
-      title: '30 marcas, um único contato',
-      desc: 'Em vez de gerenciar 30 representantes diferentes, você fala com a Bedin. A gente cuida do resto: pedido, frete, follow-up, lançamento.'
+      title: '+30 fornecedores, um único contato',
+      desc: 'Em vez de gerenciar dezenas de representantes diferentes, você fala com a Bedin. A gente cuida do resto: pedido, frete, follow-up, lançamento.'
     },
     {
       icon: (
@@ -58,7 +58,7 @@ export default function Features() {
         </svg>
       ),
       title: 'Frete negociado pro Brasil inteiro',
-      desc: 'Pedido consolidado entre marcas reduz seu custo logístico e acelera a reposição. Da Bahia ao Rio Grande do Sul, entrega que cabe na sua margem.'
+      desc: 'Pedido consolidado entre fornecedores reduz seu custo logístico e acelera a reposição. Da Bahia ao Rio Grande do Sul, entrega que cabe na sua margem.'
     },
     {
       icon: (

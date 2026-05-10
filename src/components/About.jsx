@@ -27,14 +27,14 @@ export default function About() {
             <img src="/imagem familia.png" alt="Família Bedin" />
             <div className="about__badge">
               <div className="year-num">2016</div>
-              <div className="year-txt">Outubro de 2016<br />Biguaçu, SC</div>
+              <div className="year-txt">Outubro de 2016<br />Grande Florianópolis, SC</div>
             </div>
           </div>
           <div className="about__content reveal" ref={contentRef}>
             <span className="label">Nossa história</span>
             <h2 className="sec-title">Em 2016, <span className="accent">Jean e Juli começaram com uma decisão</span>: lojista bem atendido vira parceiro pra vida.</h2>
             <p className="about__lead">
-              A Bedin nasceu em outubro de 2016 em Biguaçu (SC). Dez anos depois somos 12 pessoas no time, com 30 marcas representadas e centenas de lojistas que avaliaram nosso trabalho com nota 4,9 no Google. Não foi sorte. Foi escolha: servir antes de vender.
+              A Bedin nasceu em outubro de 2016, com Jean e Juli prospectando lojistas pela Grande Florianópolis. Dez anos depois somos 12 pessoas no time, com mais de 30 fornecedores parceiros e mais de 200 empresas atendidas todo mês. Não foi sorte. Foi escolha: servir antes de vender.
             </p>
             <div className="about__cta">
               <Link to="/sobre" className="btn btn-filled large">Conhecer a história completa →</Link>

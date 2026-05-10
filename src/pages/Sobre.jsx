@@ -29,27 +29,27 @@ const timeline = [
   {
     year: '2016',
     title: 'Onde tudo começou',
-    text: 'Outubro de 2016, Biguaçu (SC). Jean Carlos Bedin e Juli Bedin fundam a Bedin Representação atendendo lojistas da Grande Florianópolis com poucas marcas e muita disposição pra servir.'
+    text: 'Outubro de 2016. Jean Carlos Bedin e Juli Bedin saem de Concórdia rumo a São José (SC), bairro Cobrasol, pra representar uma empresa de produtos naturais. Começam prospectando lojas naturais com GPS na mão pela Grande Florianópolis e sul do estado.'
   },
   {
-    year: '2018',
-    title: 'Primeira expansão estadual',
-    text: 'A operação cresce pelo boca a boca. Em dois anos, a Bedin já atende lojas em todo Santa Catarina e começa a abrir caminho no Paraná e no Rio Grande do Sul.'
+    year: '2019',
+    title: 'Boca a boca e crescimento solo',
+    text: 'Três anos de operação enxuta. A Bedin já atende cerca de 200 lojistas, e Jean e Juli percebem que tocar tudo a dois está virando gargalo: precisam de mais gente pra continuar entregando o atendimento que se tornou marca registrada.'
   },
   {
     year: '2020',
-    title: 'Time cresce, atendimento humaniza',
-    text: 'O time cresce e o atendimento humaniza. A regra interna passa a ser uma só: cada cliente sabe o nome de quem o atende, e quem atende sabe o nome da loja.'
+    title: 'Escritório em Biguaçu e os primeiros do time',
+    text: 'A família se muda pra Biguaçu (SC) e abre o primeiro escritório próprio. Mesmo no ano da pandemia, a Bedin contrata os dois primeiros colaboradores pra reforçar o atendimento aos lojistas.'
   },
   {
-    year: '2023',
-    title: '20 marcas e cobertura nacional',
-    text: 'Pedido consolidado entre marcas vira o diferencial logístico. Lojistas do Norte ao Sul conseguem montar mix completo com um único contato e frete negociado.'
+    year: '2021–2025',
+    title: 'Expansão do time e quatro escritórios',
+    text: 'Cinco anos de crescimento contínuo. O time vai aumentando, a Bedin troca de escritório quatro vezes pra acompanhar a operação, e a curadoria de fornecedores passa a representar marcas referência no varejo natural brasileiro.'
   },
   {
     year: '2026',
     title: 'Onde estamos hoje',
-    text: '12 pessoas no time. 30 marcas representadas. Mais de 1.000 produtos no catálogo. Centenas de avaliações reais no Google com nota 4,9. Atendimento em todo o Brasil.'
+    text: '12 pessoas atrás de cada pedido (Jean, Juli, o filho da família e mais 10 colaboradores). Mais de 30 fornecedores parceiros, mais de 1.000 produtos no catálogo e mais de 200 empresas atendidas por mês em todo o Brasil. Nota 4,9 no Google com centenas de avaliações reais.'
   }
 ]
 
@@ -68,7 +68,7 @@ export default function Sobre() {
     document.title = 'A família Bedin | Bedin Representação'
     const meta = document.querySelector('meta[name="description"]')
     if (meta) {
-      meta.content = 'A história da Bedin Representação: 10 anos abastecendo lojistas naturais do Brasil com 30 marcas, 12 pessoas no time e nota 4,9 no Google.'
+      meta.content = 'A história da Bedin Representação: 10 anos abastecendo lojistas naturais do Brasil, com mais de 30 fornecedores parceiros, 12 pessoas no time e nota 4,9 no Google.'
     }
   }, [])
 
@@ -84,14 +84,14 @@ export default function Sobre() {
                 A história de uma família que escolheu <span className="accent">servir antes de vender</span>.
               </h1>
               <p className="sobre-hero__sub">
-                Dez anos atrás éramos duas pessoas com uma decisão. Hoje somos 12, com 30 marcas representadas, mais de 1.000 produtos no catálogo e centenas de lojistas que avaliaram nosso trabalho com nota 4,9 no Google.
+                Dez anos atrás, Jean e Juli saíram de Concórdia rumo à Grande Florianópolis com uma decisão. Hoje somos 12 pessoas no time, com mais de 30 fornecedores parceiros, mais de 1.000 produtos no catálogo e mais de 200 empresas atendidas todo mês.
               </p>
             </div>
             <div className="sobre-hero__visual">
               <img src="/imagem familia.png" alt="Família Bedin" />
               <div className="sobre-hero__badge">
                 <span className="num">2016</span>
-                <span className="txt">Biguaçu, SC</span>
+                <span className="txt">Grande Florianópolis</span>
               </div>
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function Sobre() {
               <span className="label">Por que existimos</span>
               <h2>A Bedin nasceu pra resolver um problema que todo lojista natural conhece de cor: <span className="accent">representante que some depois da venda</span>.</h2>
               <p>
-                Em 2016, Jean e Juli olharam pro mercado e viram a mesma cena se repetir. O lojista comprava, o representante sumia. Quando aparecia, era pra empurrar o próximo lançamento, não pra resolver o pedido atrasado, o produto faltando, a dúvida sobre giro. A gente decidiu que a Bedin seria diferente. E continua sendo, dez anos depois.
+                Em 2016, Jean e Juli saíram de Concórdia pra Grande Florianópolis com uma representação na mão e GPS no carro. Prospectando porta a porta, viram a mesma cena se repetir em cada loja: o lojista comprava, o representante sumia. Quando aparecia, era pra empurrar o próximo lançamento, não pra resolver o pedido atrasado ou a dúvida sobre giro. A gente decidiu que a Bedin seria diferente. E continua sendo, dez anos depois.
               </p>
             </Reveal>
           </div>
