@@ -44,7 +44,7 @@ export default function Header() {
         <nav className={`header__nav${menuOpen ? ' open' : ''}`} id="nav">
           {isHome ? (
             <>
-              <a href="#sobre" onClick={e => handleNavClick(e, '#sobre')}>Sobre nós</a>
+              <Link to="/sobre" onClick={closeMenu}>Sobre nós</Link>
               <a href="#produtos" onClick={e => handleNavClick(e, '#produtos')}>Produtos</a>
               <a href="#diferenciais" onClick={e => handleNavClick(e, '#diferenciais')}>Diferenciais</a>
               <a href="#cotacao" onClick={e => handleNavClick(e, '#cotacao')}>Cotação</a>
@@ -52,7 +52,7 @@ export default function Header() {
           ) : (
             <>
               <Link to="/" onClick={closeMenu}>Início</Link>
-              <Link to="/#sobre" onClick={closeMenu}>Sobre nós</Link>
+              <Link to="/sobre" onClick={closeMenu}>Sobre nós</Link>
               <Link to="/#cotacao" onClick={closeMenu}>Cotação</Link>
             </>
           )}

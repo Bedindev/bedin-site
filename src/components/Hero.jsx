@@ -34,8 +34,7 @@ export default function Hero() {
         <div className="hero__content">
           <span className="hero__eyebrow">Família Bedin atendendo lojistas desde 2016</span>
           <h1 className="hero__title">
-            A sua loja natural merece<br />
-            <span className="accent">uma representante que se importa</span>.
+            A sua loja natural merece <span className="accent">uma representante que se importa</span>.
           </h1>
           <p className="hero__subtitle">
             São 30 marcas, mais de 1.000 produtos e uma equipe de 12 pessoas atrás de cada pedido.
