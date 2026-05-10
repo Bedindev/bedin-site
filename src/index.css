@@ -1406,27 +1406,31 @@ ul { list-style: none; }
 }
 .sobre-hero__badge {
   position: absolute;
-  bottom: -20px;
-  left: 20px;
-  background: var(--secondary-container);
-  color: var(--primary);
+  bottom: 20px;
+  left: -32px;
+  background: rgba(249,249,247,0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: var(--r-xl);
   padding: var(--s4) var(--s6);
-  border-radius: var(--r-lg);
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: left;
 }
 .sobre-hero__badge .num {
   display: block;
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: var(--headline-lg);
   font-weight: 800;
+  color: var(--primary);
   line-height: 1;
 }
 .sobre-hero__badge .txt {
   display: block;
-  font-size: 0.85rem;
-  margin-top: 4px;
+  font-size: var(--body-sm);
   font-weight: 600;
+  color: var(--on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
 }
 
 .sobre-manifesto {
