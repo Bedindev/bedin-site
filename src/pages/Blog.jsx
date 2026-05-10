@@ -61,9 +61,9 @@ export default function Blog() {
       <main className="blog-page">
         <div className="container">
           <div className="blog-hero">
-            <span className="label">Conteúdo</span>
-            <h1 className="sec-title">Blog <span className="accent">Bedin</span></h1>
-            <p>Dicas, novidades e estratégias para lojas de produtos naturais.</p>
+            <span className="label">Conteúdo pra quem tem loja</span>
+            <h1 className="sec-title">Blog <span className="accent">Bedin</span> · o que ninguém te conta sobre vender produto natural</h1>
+            <p>Dicas práticas, análises de mercado e estratégias reais que aplicamos com nossos 234 lojistas-parceiros.</p>
           </div>
           <div className="blog-layout">
             <aside className="blog-sidebar">
@@ -93,7 +93,7 @@ export default function Blog() {
               {loading ? (
                 <p className="blog-loading">Carregando posts...</p>
               ) : posts.length === 0 ? (
-                <p className="blog-empty">Nenhum post encontrado.</p>
+                <p className="blog-empty">Em breve novos conteúdos por aqui.</p>
               ) : (
                 posts.map(post => (
                   <Link to={`/blog/${post.slug}`} key={post.id} className="blog-card">

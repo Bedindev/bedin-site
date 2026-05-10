@@ -58,22 +58,26 @@ export default function Stats() {
   return (
     <section className="stats">
       <div className="container">
+        <div className="stats__header">
+          <span className="label">Os números que cabem na sua gôndola</span>
+          <h2 className="sec-title">O que <span className="accent">10 anos abastecendo o Brasil</span> acumulou.</h2>
+        </div>
         <div className="stats__grid">
           <RevealWrapper>
+            <Counter target={234} />
+            <div className="stat-label">Avaliações 4,9 estrelas no Google</div>
+          </RevealWrapper>
+          <RevealWrapper>
             <Counter target={1000} suffix="+" />
-            <div className="stat-label">Produtos disponíveis</div>
+            <div className="stat-label">Produtos no catálogo</div>
           </RevealWrapper>
           <RevealWrapper>
-            <Counter target={30} prefix="+" />
-            <div className="stat-label">Fornecedores parceiros</div>
+            <Counter target={30} />
+            <div className="stat-label">Marcas representadas</div>
           </RevealWrapper>
           <RevealWrapper>
-            <Counter target={8} />
-            <div className="stat-label">Anos de mercado</div>
-          </RevealWrapper>
-          <RevealWrapper>
-            <Counter target={100} suffix="%" />
-            <div className="stat-label">Cotação gratuita</div>
+            <Counter target={12} />
+            <div className="stat-label">Pessoas no time da Bedin</div>
           </RevealWrapper>
         </div>
       </div>

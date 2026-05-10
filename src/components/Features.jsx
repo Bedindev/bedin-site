@@ -35,8 +35,8 @@ export default function Features() {
           <path d="M9 12h6M9 16h4"/>
         </svg>
       ),
-      title: 'Cotação gratuita',
-      desc: 'Solicite quantas cotações precisar, sem custo. Respondemos em até 24 horas úteis.'
+      title: 'Cotação em 24h, sem custo',
+      desc: 'Você manda no WhatsApp, a gente devolve com preço, prazo e disponibilidade no próximo dia útil. Sem reunião, sem proposta de quatro páginas.'
     },
     {
       icon: (
@@ -45,8 +45,8 @@ export default function Features() {
           <polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
       ),
-      title: '+1.000 produtos',
-      desc: 'Amplo portfólio de produtos naturais: frutas secas, especiarias, grãos, sementes e muito mais.'
+      title: '30 marcas, um único contato',
+      desc: 'Em vez de gerenciar 30 representantes diferentes, você fala com a Bedin. A gente cuida do resto: pedido, frete, follow-up, lançamento.'
     },
     {
       icon: (
@@ -57,8 +57,8 @@ export default function Features() {
           <path d="M16 3.13a4 4 0 010 7.75"/>
         </svg>
       ),
-      title: '+30 fornecedores',
-      desc: 'Parceria com os melhores fornecedores do segmento natural para garantir qualidade e disponibilidade.'
+      title: 'Frete negociado pro Brasil inteiro',
+      desc: 'Pedido consolidado entre marcas reduz seu custo logístico e acelera a reposição. Da Bahia ao Rio Grande do Sul, entrega que cabe na sua margem.'
     },
     {
       icon: (
@@ -69,8 +69,8 @@ export default function Features() {
           <circle cx="18.5" cy="18.5" r="2.5"/>
         </svg>
       ),
-      title: 'Frete negociado',
-      desc: 'Negociamos o melhor frete para todo o Brasil, reduzindo custos logísticos para sua empresa.'
+      title: 'Mix completo, sem furo de gôndola',
+      desc: '8 categorias e mais de 1.000 SKUs: frutas secas, especiarias, grãos, sementes, chás, chips, drageados e farináceos. Você nunca diz "não tenho" pro seu cliente.'
     },
     {
       icon: (
@@ -79,8 +79,8 @@ export default function Features() {
           <polyline points="12 6 12 12 16 14"/>
         </svg>
       ),
-      title: 'Atendimento rápido',
-      desc: 'Time ágil e comprometido. Você nunca fica sem resposta quando precisa de uma solução rápida.'
+      title: 'Atendimento que tem nome',
+      desc: 'Tainá, Jean, Juli e o time de 12 pessoas. Você não fala com bot. Você fala com gente que sabe o nome da sua loja e o que você comprou no mês passado.'
     },
     {
       icon: (
@@ -88,8 +88,8 @@ export default function Features() {
           <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
         </svg>
       ),
-      title: 'Empresa familiar',
-      desc: 'Fundada em 2016 com valores de confiança, transparência e compromisso com cada cliente.'
+      title: 'Empresa familiar, decisão familiar',
+      desc: 'Fundada por Jean e Juli em outubro de 2016. Quando você precisa de uma exceção comercial, a resposta vem rápido, porque quem decide está do outro lado do WhatsApp.'
     }
   ]
 
@@ -97,9 +97,9 @@ export default function Features() {
     <section className="features section" id="diferenciais">
       <div className="container">
         <div className="sec-header reveal" ref={headerRef}>
-          <span className="label">Por que nos escolher</span>
-          <h2 className="sec-title">Dê um chute no <span className="accent">desperdício</span></h2>
-          <p className="sec-sub">Conectamos seu negócio aos melhores produtos naturais do Brasil, com agilidade e preço justo.</p>
+          <span className="label">Por que lojistas ficam</span>
+          <h2 className="sec-title">O que muda na sua loja com a <span className="accent">Bedin do seu lado</span>.</h2>
+          <p className="sec-sub">A gente não vende produto. A gente vende previsibilidade pra sua gôndola, pra você focar em vender e não em correr atrás de fornecedor.</p>
         </div>
         <div className="features__grid">
           {features.map((f, i) => (

@@ -2,10 +2,10 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 
 const fallbackReviews = [
   {
-    name: 'Cristiane Bellé',
-    date: 'um ano atrás',
+    name: 'Alessandro Ferreira',
+    date: 'cliente há anos',
     rating: 5,
-    text: 'Minha experiência com a Bedin Representações foi excepcional em todos os aspectos. Desde o primeiro contato, fui recebida com um atendimento impecável. Empresa totalmente transparente, honesta e comprometida em oferecer as melhores soluções.'
+    text: 'Sobre a Bedin Representação, só tenho uma palavra: gratidão! Há anos tenho parceria com eles e sempre foram muito atenciosos, competentes e prestam um serviço de excelência!'
   },
   {
     name: 'Fernanda Tramontin',
@@ -14,10 +14,10 @@ const fallbackReviews = [
     text: 'Representantes atenciosos e prestativos! A Tainá cuida do nosso atendimento com muito carinho, sempre esclarecendo dúvidas e oferecendo ótimas opções de produtos. Até presente de aniversário ela enviou! Muito satisfeita.'
   },
   {
-    name: 'Steffani Amaral',
-    date: '9 meses atrás',
+    name: 'Cristiane Bellé',
+    date: 'um ano atrás',
     rating: 5,
-    text: 'Empresa abençoada, equipe de colaboradores prestativos e eficientes, tendo um atendimento excelente e comprometimento com os clientes!'
+    text: 'Minha experiência com a Bedin Representação foi excepcional em todos os aspectos. Desde o primeiro contato, fui recebida com um atendimento impecável. Empresa totalmente transparente, honesta e comprometida em oferecer as melhores soluções.'
   },
   {
     name: 'Rodrigo Schmidt',
@@ -26,10 +26,10 @@ const fallbackReviews = [
     text: 'Empresa séria, comprometida e com um atendimento excepcional! Sempre fomos muito bem atendidos pela Tainá, que é ágil, prestativa e está sempre disposta a nos ajudar.'
   },
   {
-    name: 'Alessandro Ferreira',
-    date: 'um ano atrás',
+    name: 'Steffani Amaral',
+    date: '9 meses atrás',
     rating: 5,
-    text: 'Sobre a Bedin representação, só tenho uma palavra: gratidão! Há anos tenho parceria com eles e sempre foram muito atenciosos, competentes e prestam um serviço de excelência!'
+    text: 'Empresa abençoada, equipe de colaboradores prestativos e eficientes, tendo um atendimento excelente e comprometimento com os clientes!'
   },
 ]
 
@@ -190,8 +190,9 @@ export default function Reviews() {
     <section className="reviews section">
       <div className="container">
         <div className="sec-header reveal" ref={headerRef}>
-          <span className="label">Histórias de sucesso e confiança</span>
-          <h2 className="sec-title">O que nossos <span className="accent">clientes dizem</span></h2>
+          <span className="label">A verdade vem dos lojistas</span>
+          <h2 className="sec-title"><span className="accent">234 avaliações no Google.</span> Nota 4,9. Sem campanha. Sem combinação.</h2>
+          <p className="sec-sub"><em>Empresa séria não precisa dizer que é. Os clientes dizem por ela.</em></p>
         </div>
         <div className="reviews__layout reveal" ref={layoutRef}>
           <div className="reviews__panel">
@@ -214,7 +215,7 @@ export default function Reviews() {
               rel="noopener noreferrer"
               className="btn btn-filled reviews__panel-btn"
             >
-              Avalie-nos no Google
+              Ler todas no Google
             </a>
           </div>
           <div className="reviews__carousel-wrap" ref={wrapRef}>
@@ -258,6 +259,16 @@ export default function Reviews() {
               </svg>
             </button>
           </div>
+        </div>
+        <div className="reviews__cta">
+          <a
+            href="https://wa.me/5548998680025?text=Ol%C3%A1%20Bedin%2C%20quero%20ser%20o%20pr%C3%B3ximo%20depoimento%20de%205%20estrelas!"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-filled large"
+          >
+            Quero ser o próximo depoimento de 5 estrelas
+          </a>
         </div>
       </div>
     </section>

@@ -36,7 +36,7 @@ export default function BlogPost() {
   }
 
   if (loading) return <><Header /><div className="container" style={{padding:'120px 0', textAlign:'center'}}>Carregando...</div><Footer /></>
-  if (!post) return <><Header /><div className="container" style={{padding:'120px 0', textAlign:'center'}}><h2>Post não encontrado</h2><Link to="/blog">← Voltar ao blog</Link></div><Footer /></>
+  if (!post) return <><Header /><div className="container" style={{padding:'120px 0', textAlign:'center'}}><h2>Não encontramos esse post</h2><Link to="/blog">← Voltar pro blog</Link></div><Footer /></>
 
   return (
     <>
@@ -44,7 +44,7 @@ export default function BlogPost() {
       <main className="blog-post-page">
         <div className="container">
           <div className="blog-post-wrap">
-            <Link to="/blog" className="blog-back">← Voltar ao blog</Link>
+            <Link to="/blog" className="blog-back">← Voltar pro blog</Link>
             {post.category && <span className="blog-card__cat">{post.category}</span>}
             <h1>{post.title}</h1>
             <div className="blog-post__meta">

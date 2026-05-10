@@ -26,49 +26,30 @@ export default function About() {
             <img src="/imagem familia.png" alt="Família Bedin" />
             <div className="about__badge">
               <div className="year-num">2016</div>
-              <div className="year-txt">Fundada em<br />Biguaçu, SC</div>
+              <div className="year-txt">Outubro de 2016<br />Biguaçu, SC</div>
             </div>
           </div>
           <div className="about__content reveal" ref={contentRef}>
             <span className="label">Nossa história</span>
-            <h2 className="sec-title">Uma família dedicada<br />a <span className="accent">produtos naturais</span></h2>
+            <h2 className="sec-title">Em 2016, <span className="accent">Jean e Juli começaram com uma decisão</span>: lojista bem atendido vira parceiro pra vida.</h2>
             <p className="about__lead">
-              Em outubro de 2016, Jean Carlos Bedin e Juli Bedin fundaram a Bedin Representação com um objetivo claro: conectar empresas de todo o Brasil aos melhores produtos naturais do mercado.
+              A Bedin Representação nasceu em outubro de 2016 em Biguaçu, Santa Catarina, fundada pelo casal Jean Carlos Bedin e Juli Bedin. A gente começou pequeno, atendendo lojas da Grande Florianópolis. Dez anos depois somos 12 pessoas no time, com 30 marcas representadas, mais de 1.000 produtos no catálogo e mais de 234 lojistas que avaliaram nosso trabalho com nota 4,9 no Google. Nada disso aconteceu por acaso. Aconteceu porque escolhemos servir antes de vender, e isso virou o que nos diferencia.
             </p>
-            <div className="about__values">
-              <div className="val-row">
-                <div className="val-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Missão</strong>
-                  <p>Gerar oportunidades de crescimento para todos os nossos parceiros através da forma que servimos.</p>
-                </div>
-              </div>
-              <div className="val-row">
-                <div className="val-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Visão</strong>
-                  <p>Atender mensalmente 10 mil empresas até 2030.</p>
-                </div>
-              </div>
-              <div className="val-row">
-                <div className="val-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Valores</strong>
-                  <p>Ética, Meritocracia, Pontualidade, Autoresponsabilidade, Proatividade, Gratidão e Servir.</p>
-                </div>
-              </div>
+            <div className="about__vision">
+              <h3>Onde queremos chegar até 2030: <strong>10 mil empresas atendidas todo mês.</strong></h3>
+              <p>Não é meta de vaidade. É um compromisso público. A gente vai crescer junto com você.</p>
+            </div>
+            <div className="about__values-table">
+              <h4>Nossos valores · o que isso significa pra você</h4>
+              <ul>
+                <li><strong>Servir</strong><span>Você vem antes da venda. Sempre.</span></li>
+                <li><strong>Pontualidade</strong><span>Pedido sai na data combinada. Sem desculpa.</span></li>
+                <li><strong>Ética</strong><span>Mesmo preço, mesma condição, com ou sem você olhando.</span></li>
+                <li><strong>Autoresponsabilidade</strong><span>Erro nosso é problema nosso. Você não paga por ele.</span></li>
+                <li><strong>Proatividade</strong><span>A gente avisa antes do estoque acabar.</span></li>
+                <li><strong>Meritocracia</strong><span>Quem trabalha melhor pra você é quem te atende.</span></li>
+                <li><strong>Gratidão</strong><span>Cada lojista que confia na gente é razão pra fazer melhor amanhã.</span></li>
+              </ul>
             </div>
           </div>
         </div>

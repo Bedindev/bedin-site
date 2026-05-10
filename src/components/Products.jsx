@@ -18,14 +18,14 @@ function RevealCard({ children }) {
 }
 
 const categories = [
-  { img: '/Frutas secas.png', name: 'Frutas Secas', desc: 'Uva passa, damasco, tâmara, ameixa, cranberry e mais' },
-  { img: '/especiarias.png', name: 'Especiarias', desc: 'Pimenta, canela, cúrcuma, gengibre, noz-moscada' },
-  { img: '/grãos.png', name: 'Grãos', desc: 'Quinoa, amaranto, trigo, aveia, cevada e cereais integrais' },
-  { img: '/sementes.png', name: 'Sementes', desc: 'Chia, linhaça, girassol, abóbora, gergelim' },
-  { img: '/chas.png', name: 'Chás', desc: 'Ervas medicinais, funcionais e blends especiais' },
-  { img: '/chips.png', name: 'Chips', desc: 'Chips de frutas, legumes e vegetais desidratados' },
-  { img: '/drageados.png', name: 'Drageados', desc: 'Castanhas e frutas cobertas com chocolate' },
-  { img: '/farinaceos.png', name: 'Farináceos', desc: 'Farinhas especiais, amidos e misturas para panificação' },
+  { img: '/Frutas secas.png', name: 'Frutas Secas', desc: 'Uva passa, damasco, tâmara, ameixa, cranberry e mais. A categoria que mais gira no varejo natural.' },
+  { img: '/especiarias.png', name: 'Especiarias', desc: 'Pimenta, canela, cúrcuma, gengibre, noz-moscada. Margem alta, ticket fácil.' },
+  { img: '/grãos.png', name: 'Grãos', desc: 'Quinoa, amaranto, trigo, aveia, cevada e cereais integrais. Compra recorrente, cliente fiel.' },
+  { img: '/sementes.png', name: 'Sementes', desc: 'Chia, linhaça, girassol, abóbora, gergelim. O básico que toda loja natural tem que ter sempre.' },
+  { img: '/chas.png', name: 'Chás', desc: 'Ervas medicinais, funcionais e blends especiais. Sazonalidade que rende o ano inteiro.' },
+  { img: '/chips.png', name: 'Chips', desc: 'Chips de frutas, legumes e vegetais desidratados. Categoria nova, espaço pra crescer.' },
+  { img: '/drageados.png', name: 'Drageados', desc: 'Castanhas e frutas cobertas com chocolate. Impulso de balcão, ticket extra.' },
+  { img: '/farinaceos.png', name: 'Farináceos', desc: 'Farinhas especiais, amidos e misturas pra panificação. Pega a onda da panificação saudável.' },
 ]
 
 export default function Products() {
@@ -59,9 +59,9 @@ export default function Products() {
     <section className="products section" id="produtos">
       <div className="container">
         <div className="sec-header reveal" ref={headerRef}>
-          <span className="label">Nosso portfólio</span>
-          <h2 className="sec-title">Mais de <span className="accent">1.000 produtos</span><br />em 8 categorias</h2>
-          <p className="sec-sub">Da matéria-prima ao produto pronto, tudo que seu negócio precisa.</p>
+          <span className="label">O que sua loja precisa</span>
+          <h2 className="sec-title"><span className="accent">8 categorias.</span><br />Mais de 1.000 produtos.</h2>
+          <p className="sec-sub">Da matéria-prima ao produto pronto pra gôndola. Você monta o pedido como sua loja precisa e a Bedin entrega tudo junto.</p>
         </div>
         <div className="products__grid">
           {categories.map((cat, i) => (
