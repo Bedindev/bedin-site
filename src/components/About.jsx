@@ -24,7 +24,7 @@ export default function About() {
       <div className="container">
         <div className="about__grid">
           <div className="about__img-wrap reveal" ref={imgRef}>
-            <img src="/imagem familia.png" alt="Família Bedin" />
+            <img src="/imagem-familia.webp" alt="Família Bedin" width="424" height="632" />
             <div className="about__badge">
               <div className="year-num">2016</div>
               <div className="year-txt">Outubro de 2016<br />Grande Florianópolis, SC</div>

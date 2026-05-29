@@ -66,7 +66,7 @@ export default function Products() {
         <div className="products__grid">
           {categories.map((cat, i) => (
             <RevealCard key={i}>
-              <div className="cat-icon"><img src={cat.img} alt={cat.name} /></div>
+              <div className="cat-icon"><img src={cat.img} alt={cat.name} width="120" height="120" /></div>
               <div className="cat-card__body">
                 <h3>{cat.name}</h3>
                 <p>{cat.desc}</p>
