@@ -1,14 +1,12 @@
 import { useEffect, useRef } from 'react'
 
 const logos = [
-  { src: '/logos-fornecedores/forncedor-amazonia.png', alt: 'Amazônia' },
   { src: '/logos-fornecedores/fornecedor-Nuttini.png', alt: 'Nuttini' },
   { src: '/logos-fornecedores/fornecedor-banto.png', alt: 'Banto' },
   { src: '/logos-fornecedores/fornecedor-brasbol.png', alt: 'Brasbol' },
   { src: '/logos-fornecedores/fornecedor-brasil-ervas.png', alt: 'Brasil Ervas' },
   { src: '/logos-fornecedores/fornecedor-brasnutt.png', alt: 'Brasnutt' },
   { src: '/logos-fornecedores/fornecedor-castanhas-ouro-verde.png', alt: 'Castanhas Ouro Verde' },
-  { src: '/logos-fornecedores/fornecedor-ceara.png', alt: 'Ceará' },
   { src: '/logos-fornecedores/fornecedor-costa.png', alt: 'Costa' },
   { src: '/logos-fornecedores/fornecedor-cs.png', alt: 'CS' },
   { src: '/logos-fornecedores/fornecedor-dicaju.png', alt: 'Dicaju' },
@@ -17,7 +15,6 @@ const logos = [
   { src: '/logos-fornecedores/fornecedor-gramore.png', alt: 'Gramore' },
   { src: '/logos-fornecedores/fornecedor-granne.png', alt: 'Granne' },
   { src: '/logos-fornecedores/fornecedor-granvital.png', alt: 'Granvital' },
-  { src: '/logos-fornecedores/fornecedor-iberica.png', alt: 'Ibérica' },
   { src: '/logos-fornecedores/fornecedor-icau.png', alt: 'Icaú' },
   { src: '/logos-fornecedores/fornecedor-jandira-reserva.png', alt: 'Jandira Reserva' },
   { src: '/logos-fornecedores/fornecedor-jandira.png', alt: 'Jandira' },
