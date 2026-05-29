@@ -30,7 +30,7 @@ export default function Contact() {
     const empresa = form.querySelector('#empresa').value
     const telefone = form.querySelector('#tel').value
     const email = form.querySelector('#email').value
-    const produtos = form.querySelector('#produtos').value
+    const produtos = form.querySelector('#produtos-cotacao').value
     const quantidade = form.querySelector('#qtd').value
 
     const msg = [
@@ -118,8 +118,8 @@ export default function Contact() {
                 </div>
               </div>
               <div className="fgroup">
-                <label htmlFor="produtos">Que produtos você precisa?</label>
-                <textarea id="produtos" rows="4" placeholder="Ex: 50kg de uva passa, 30kg de chia, blends de chá..." required></textarea>
+                <label htmlFor="produtos-cotacao">Que produtos você precisa?</label>
+                <textarea id="produtos-cotacao" rows="4" placeholder="Ex: 50kg de uva passa, 30kg de chia, blends de chá..." required></textarea>
               </div>
               <div className="fgroup">
                 <label htmlFor="qtd">Quantidade estimada por mês</label>

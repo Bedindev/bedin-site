@@ -19,14 +19,16 @@ function Home() {
   return (
     <>
       <Header />
-      <Hero />
-      <Stats />
-      <Features />
-      <Suppliers />
-      <Products />
-      <About />
-      <Reviews />
-      <Contact />
+      <main>
+        <Hero />
+        <Stats />
+        <Features />
+        <Suppliers />
+        <Products />
+        <About />
+        <Reviews />
+        <Contact />
+      </main>
       <Footer />
       <WhatsAppFloat />
     </>
