@@ -21,14 +21,39 @@ export default function BlogPost() {
       setPost(data)
       setLoading(false)
 
-      if (data?.seo_title) document.title = data.seo_title
-      if (data?.seo_description) {
-        let meta = document.querySelector('meta[name="description"]')
-        if (!meta) { meta = document.createElement('meta'); meta.name = 'description'; document.head.appendChild(meta) }
-        meta.content = data.seo_description
+      if (!data) return
+
+      const pageUrl = `https://www.bedinrepresentacao.com.br/blog/${slug}`
+      const title = data.seo_title || data.title
+      const description = data.seo_description || data.excerpt || ''
+
+      document.title = title
+
+      const setMeta = (selector, attr, value) => {
+        let el = document.querySelector(selector)
+        if (!el) { el = document.createElement('meta'); document.head.appendChild(el) }
+        el.setAttribute(attr, value)
       }
+
+      setMeta('meta[name="description"]', 'content', description)
+
+      let canonical = document.querySelector('link[rel="canonical"]')
+      if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical) }
+      canonical.href = pageUrl
+
+      setMeta('meta[property="og:title"]', 'content', title)
+      setMeta('meta[property="og:description"]', 'content', description)
+      setMeta('meta[property="og:url"]', 'content', pageUrl)
+      setMeta('meta[property="og:type"]', 'content', 'article')
+      if (data.cover_image) setMeta('meta[property="og:image"]', 'content', data.cover_image)
     }
     fetchPost()
+
+    return () => {
+      document.title = 'Bedin Representação | A representante que cuida da sua loja natural'
+      const canonical = document.querySelector('link[rel="canonical"]')
+      if (canonical) canonical.href = 'https://www.bedinrepresentacao.com.br/'
+    }
   }, [slug])
 
   function formatDate(date) {
