@@ -11,6 +11,8 @@
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/blog", "destination": "https://bedin-site-gi7n.vercel.app/blog" },
+    { "source": "/blog/(.*)", "destination": "https://bedin-site-gi7n.vercel.app/blog/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
