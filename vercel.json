@@ -1,4 +1,14 @@
 {
+  "redirects": [
+    { "source": "/contato", "destination": "/#cotacao", "permanent": true },
+    { "source": "/contato/", "destination": "/#cotacao", "permanent": true },
+    { "source": "/seja-nosso-cliente", "destination": "/#cotacao", "permanent": true },
+    { "source": "/seja-nosso-cliente/", "destination": "/#cotacao", "permanent": true },
+    { "source": "/sobre-nos", "destination": "/sobre", "permanent": true },
+    { "source": "/sobre-nos/", "destination": "/sobre", "permanent": true },
+    { "source": "/instituto-bedin", "destination": "/sobre", "permanent": true },
+    { "source": "/instituto-bedin/", "destination": "/sobre", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
