@@ -56,7 +56,7 @@ export default function Header() {
               <Link to="/#cotacao" onClick={closeMenu}>Cotação</Link>
             </>
           )}
-          <Link to="/blog" onClick={closeMenu}>Blog</Link>
+          <a href="/blog">Blog</a>
         </nav>
         <div className="header__actions">
           <a
