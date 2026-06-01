@@ -110,7 +110,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .header__logo img { height: 40px; width: auto; filter: none; transition: filter 250ms; }
 .header__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--s8); }
 .header__logo { display: flex; align-items: center; }
-.header__nav { display: flex; align-items: center; gap: var(--s8); }
+.header__nav { display: flex; align-items: center; gap: 2rem; }
 .header__nav a { font-family: var(--font-body); font-size: var(--body-md); font-weight: 500; color: var(--on-surface-variant); transition: color 150ms; }
 .header__nav a:hover { color: var(--primary); }
 .hamburger span { background: var(--on-surface) !important; }
