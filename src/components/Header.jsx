@@ -56,7 +56,7 @@ export default function Header() {
               <Link to="/#cotacao" onClick={closeMenu}>Cotação</Link>
             </>
           )}
-          <a href="/blog">Blog</a>
+          <a href="https://blog.bedinrepresentacao.com.br" target="_blank" rel="noopener noreferrer">Blog</a>
         </nav>
         <div className="header__actions">
           <a

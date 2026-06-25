@@ -11,8 +11,6 @@ import Reviews from './components/Reviews.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
-import Blog from './pages/Blog.jsx'
-import BlogPost from './pages/BlogPost.jsx'
 import Sobre from './pages/Sobre.jsx'
 
 function Home() {
@@ -41,8 +39,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Analytics />
