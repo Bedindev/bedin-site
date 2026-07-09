@@ -9,11 +9,11 @@ export const revalidate = 86400
 export const metadata: Metadata = {
   title: 'Blog Bedin · o que ninguém te conta sobre vender produto natural',
   description: 'Dicas práticas, análises de mercado e estratégias reais que aplicamos com nossos lojistas-parceiros.',
-  alternates: { canonical: 'https://www.bedinrepresentacao.com.br/blog' },
+  alternates: { canonical: 'https://blog.bedinrepresentacao.com.br' },
   openGraph: {
     title: 'Blog Bedin · o que ninguém te conta sobre vender produto natural',
     description: 'Dicas práticas, análises de mercado e estratégias reais para lojistas de produtos naturais.',
-    url: 'https://www.bedinrepresentacao.com.br/blog',
+    url: 'https://blog.bedinrepresentacao.com.br',
     type: 'website',
   },
 }

@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(slug)
   if (!post) return {}
 
-  const url = `https://www.bedinrepresentacao.com.br/blog/${slug}`
+  const url = `https://blog.bedinrepresentacao.com.br/${slug}`
   const title = post.seo_title || post.title
   const description = post.seo_description || post.excerpt || ''
 
@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
       name: 'Bedin Representações',
       url: 'https://www.bedinrepresentacao.com.br',
     },
-    url: `https://www.bedinrepresentacao.com.br/blog/${slug}`,
+    url: `https://blog.bedinrepresentacao.com.br/${slug}`,
   }
 
   return (
