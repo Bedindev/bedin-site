@@ -9,7 +9,7 @@
     { "source": "/instituto-bedin", "destination": "/sobre", "permanent": true },
     { "source": "/instituto-bedin/", "destination": "/sobre", "permanent": true },
     { "source": "/blog", "destination": "https://blog.bedinrepresentacao.com.br", "permanent": false },
-    { "source": "/blog/:path*", "destination": "https://blog.bedinrepresentacao.com.br/blog/:path*", "permanent": false }
+    { "source": "/blog/:path*", "destination": "https://blog.bedinrepresentacao.com.br/:path*", "permanent": false }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
