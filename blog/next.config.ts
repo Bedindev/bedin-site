@@ -4,6 +4,20 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/blog',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/:slug',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {
