@@ -32,7 +32,7 @@ export default function Header() {
         <nav className={`header__nav${menuOpen ? ' open' : ''}`}>
           <a href="https://www.bedinrepresentacao.com.br" onClick={closeMenu}>Início</a>
           <a href="https://www.bedinrepresentacao.com.br/sobre" onClick={closeMenu}>Sobre nós</a>
-          <a href="/blog" onClick={closeMenu}>Blog</a>
+          <a href="/" onClick={closeMenu}>Blog</a>
           <a href="https://www.bedinrepresentacao.com.br/#cotacao" onClick={closeMenu}>Cotação</a>
         </nav>
         <div className="header__actions">
