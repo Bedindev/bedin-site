@@ -41,36 +41,37 @@ export default function CookieBanner() {
   return (
     <div style={{
       position: 'fixed',
-      bottom: '24px',
+      bottom: '16px',
       left: '50%',
       transform: 'translateX(-50%)',
-      width: 'calc(100% - 48px)',
-      maxWidth: '640px',
-      background: '#1a1a1a',
-      color: '#f5f5f5',
-      borderRadius: '12px',
-      padding: '20px 24px',
-      boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+      width: 'calc(100% - 32px)',
+      maxWidth: '480px',
+      background: '#fff',
+      color: '#333',
+      borderRadius: '10px',
+      padding: '14px 18px',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
+      border: '1px solid #e8e8e8',
       zIndex: 9999,
       display: 'flex',
-      flexDirection: 'column',
-      gap: '16px',
+      alignItems: 'center',
+      gap: '12px',
+      flexWrap: 'wrap',
     }}>
-      <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.6' }}>
-        Usamos cookies para analisar o tráfego do site com o Google Analytics e melhorar sua experiência.
-        Veja nossa <a href="/politica-de-privacidade" style={{ color: '#8bc34a', textDecoration: 'underline' }}>Política de Privacidade</a>.
+      <p style={{ margin: 0, fontSize: '13px', lineHeight: '1.5', flex: 1, minWidth: '200px' }}>
+        Usamos cookies para melhorar sua experiência. <a href="/politica-de-privacidade" style={{ color: '#5a8a2e', textDecoration: 'underline' }}>Saiba mais</a>.
       </p>
-      <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
         <button
           onClick={handleDecline}
           style={{
             background: 'transparent',
-            border: '1px solid #555',
-            color: '#aaa',
-            borderRadius: '8px',
-            padding: '8px 20px',
+            border: '1px solid #ddd',
+            color: '#888',
+            borderRadius: '6px',
+            padding: '6px 14px',
             cursor: 'pointer',
-            fontSize: '14px',
+            fontSize: '13px',
           }}
         >
           Recusar
@@ -78,17 +79,17 @@ export default function CookieBanner() {
         <button
           onClick={handleAccept}
           style={{
-            background: '#8bc34a',
+            background: '#5a8a2e',
             border: 'none',
             color: '#fff',
-            borderRadius: '8px',
-            padding: '8px 20px',
+            borderRadius: '6px',
+            padding: '6px 14px',
             cursor: 'pointer',
-            fontSize: '14px',
+            fontSize: '13px',
             fontWeight: '600',
           }}
         >
-          Aceitar cookies
+          Aceitar
         </button>
       </div>
     </div>
