@@ -13,6 +13,7 @@ import Footer from './components/Footer.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
 import Sobre from './pages/Sobre.jsx'
 import Privacidade from './pages/Privacidade.jsx'
+import CookieBanner from './components/CookieBanner.jsx'
 
 function Home() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Analytics />
+      <CookieBanner />
     </BrowserRouter>
   )
 }
