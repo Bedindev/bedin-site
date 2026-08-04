@@ -182,8 +182,9 @@ export default function Reviews() {
   }, [])
 
   const visible = getVisible()
+  const maxIndex = Math.max(0, total - visible)
   const prevDisabled = index === 0
-  const nextDisabled = index >= total - visible
+  const nextDisabled = index >= maxIndex
 
   const scoreFormatted = String(reviewData.rating).replace('.', ',')
 
@@ -241,8 +242,8 @@ export default function Reviews() {
             </div>
             <button
               className="reviews__arrow reviews__arrow--prev"
-              onClick={() => handleManualNav(Math.max(0, index - 1))}
-              disabled={prevDisabled}
+              onClick={() => handleManualNav(index === 0 ? maxIndex : index - 1)}
+              disabled={false}
               aria-label="Anterior"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -251,8 +252,8 @@ export default function Reviews() {
             </button>
             <button
               className="reviews__arrow reviews__arrow--next"
-              onClick={() => handleManualNav(Math.min(total - getVisible(), index + 1))}
-              disabled={nextDisabled}
+              onClick={() => handleManualNav(index >= maxIndex ? 0 : index + 1)}
+              disabled={false}
               aria-label="Próximo"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
