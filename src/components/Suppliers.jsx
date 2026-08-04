@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { trackWhatsApp } from '../analytics'
 
 const logos = [
   { src: '/logos-fornecedores/fornecedor-Nuttini.png', alt: 'Nuttini' },
@@ -77,6 +78,7 @@ export default function Suppliers() {
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-filled large"
+          onClick={() => trackWhatsApp('fornecedores')}
         >
           Receber a lista completa dos fornecedores no WhatsApp
         </a>

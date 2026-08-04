@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { trackWhatsApp } from '../analytics'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import WhatsAppFloat from '../components/WhatsAppFloat'
@@ -168,6 +169,7 @@ export default function Sobre() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-filled large"
+                onClick={() => trackWhatsApp('pagina_sobre')}
               >
                 Falar com a Bedin no WhatsApp
               </a>

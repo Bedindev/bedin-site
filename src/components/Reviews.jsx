@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
+import { trackWhatsApp } from '../analytics'
 
 const fallbackReviews = [
   {
@@ -266,6 +267,7 @@ export default function Reviews() {
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-filled large"
+            onClick={() => trackWhatsApp('depoimentos')}
           >
             Quero ser o próximo depoimento de 5 estrelas
           </a>
