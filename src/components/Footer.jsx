@@ -66,7 +66,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer__bottom">
-          <p>&copy; 2024 Bedin Representação. Todos os direitos reservados.</p>
+          <p>&copy; 2024 Bedin Representação. Todos os direitos reservados. · <a href="/politica-de-privacidade" style={{ color: 'inherit', textDecoration: 'underline' }}>Política de Privacidade</a></p>
           <p>Família Bedin · Biguaçu, SC · Atendimento Brasil</p>
           <p><em>4,9 estrelas no Google · centenas de lojistas confiam.</em></p>
         </div>

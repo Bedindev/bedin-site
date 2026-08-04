@@ -12,6 +12,7 @@ import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
 import Sobre from './pages/Sobre.jsx'
+import Privacidade from './pages/Privacidade.jsx'
 
 function Home() {
   return (
@@ -39,6 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
+        <Route path="/politica-de-privacidade" element={<Privacidade />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Analytics />
