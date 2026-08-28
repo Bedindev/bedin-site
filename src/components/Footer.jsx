@@ -10,7 +10,9 @@ export default function Footer() {
               <img
                 src="/logo vetorizado Bedin.png"
                 alt="Bedin Representação"
+                width="120"
                 height="36"
+                loading="lazy"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
             </div>
@@ -34,7 +36,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer__col">
-            <h4>Navegação</h4>
+            <h3>Navegação</h3>
             <ul>
               <li><a href="#sobre">Sobre a família Bedin</a></li>
               <li><a href="#produtos">Produtos</a></li>
@@ -43,7 +45,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="footer__col">
-            <h4>Categorias</h4>
+            <h3>Categorias</h3>
             <ul>
               <li><a href="#produtos">Frutas Secas</a></li>
               <li><a href="#produtos">Especiarias</a></li>
@@ -53,7 +55,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="footer__col">
-            <h4>Fale com a gente</h4>
+            <h3>Fale com a gente</h3>
             <p>Biguaçu, SC</p>
             <p>WhatsApp · <a href="tel:+5548998680025" onClick={() => trackPhone('footer')}>(48) 99868-0025</a></p>
             <p>Telefone · <a href="tel:+554899861-1350" onClick={() => trackPhone('footer')}>(48) 99861-1350</a></p>

@@ -59,7 +59,7 @@ export default function Hero() {
         </div>
         <div className="hero__visual">
           <div className="hero__img-wrap reveal" ref={revealRef}>
-            <img src="/imagem-hero.webp" alt="Produtos naturais: grãos, sementes e especiarias" width="600" height="600" />
+            <img src="/imagem-hero.webp" alt="Produtos naturais: grãos, sementes e especiarias" width="600" height="600" fetchpriority="high" />
             <div className="hero__img-glass">
               <div className="glass-number">+30</div>
               <div className="glass-label">Fornecedores</div>

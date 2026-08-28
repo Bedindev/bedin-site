@@ -89,7 +89,7 @@ export default function Sobre() {
               </p>
             </div>
             <div className="sobre-hero__visual">
-              <img src="/imagem familia.png" alt="Família Bedin" />
+              <img src="/imagem-familia.webp" alt="Jean e Juli Bedin, fundadores da Bedin Representações, em Biguaçu, SC" width="600" height="500" loading="lazy" />
               <div className="sobre-hero__badge">
                 <span className="num">2016</span>
                 <span className="txt">Grande Florianópolis</span>

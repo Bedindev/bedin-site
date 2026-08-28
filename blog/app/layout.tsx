@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.bedinrepresentacao.com.br'),
+  metadataBase: new URL('https://blog.bedinrepresentacao.com.br'),
   title: {
     default: 'Blog Bedin | Conteúdo para lojistas de produtos naturais',
     template: '%s | Blog Bedin',
@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     siteName: 'Bedin Representações',
     locale: 'pt_BR',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@bedinrepresentacao',
   },
 }
 
