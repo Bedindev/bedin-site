@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { trackWhatsApp } from '../analytics'
 
 export default function Hero() {
@@ -19,15 +20,6 @@ export default function Hero() {
     if (revealRef.current) observer.observe(revealRef.current)
     return () => observer.disconnect()
   }, [])
-
-  const handleScroll = (e, href) => {
-    e.preventDefault()
-    const target = document.querySelector(href)
-    const header = document.getElementById('header')
-    if (target) {
-      window.scrollTo({ top: target.offsetTop - (header ? header.offsetHeight : 0) - 12, behavior: 'smooth' })
-    }
-  }
 
   return (
     <section className="hero">
@@ -54,7 +46,7 @@ export default function Hero() {
               </svg>
               Falar com a Bedin no WhatsApp
             </a>
-            <a href="#suppliers" className="btn btn-ghost-white" onClick={e => handleScroll(e, '.suppliers')}>Ver os fornecedores parceiros</a>
+            <Link to="/como-funciona" className="btn btn-ghost-white">Entender como funciona</Link>
           </div>
         </div>
         <div className="hero__visual">

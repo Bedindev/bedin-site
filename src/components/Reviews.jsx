@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { trackWhatsApp } from '../analytics'
 
-const fallbackReviews = [
+export const fallbackReviews = [
   {
     name: 'Alessandro Ferreira',
     date: 'cliente há anos',

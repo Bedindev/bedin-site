@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { trackWhatsApp, trackPhone } from '../analytics'
 
 export default function Footer() {
@@ -39,6 +40,7 @@ export default function Footer() {
             <h3>Navegação</h3>
             <ul>
               <li><a href="#sobre">Sobre a família Bedin</a></li>
+              <li><Link to="/como-funciona">Como funciona</Link></li>
               <li><a href="#produtos">Produtos</a></li>
               <li><a href="#diferenciais">Por que nos escolher</a></li>
               <li><a href="#cotacao">Pedir cotação</a></li>
