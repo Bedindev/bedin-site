@@ -289,6 +289,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .category-chip--amber { background: #fff0d1; color: var(--secondary); }
 .category-chip--slate { background: #e5edf2; color: #425d6b; }
 .category-chip--forest { background: #e0eee5; color: #24563b; }
+.category-chip--terracota { background: #fbe7dd; color: #8a4526; }
 .blog-card { min-width: 0; background: #fff; }
 .blog-card__body { gap: 14px; }
 .blog-card__body h2 { font-family: var(--font-display); font-size: 1.15rem; }
