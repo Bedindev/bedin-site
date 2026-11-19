@@ -18,14 +18,14 @@ function RevealCard({ children }) {
 }
 
 const categories = [
-  { img: '/Frutas secas.png', name: 'Frutas Secas', desc: 'Uva passa, damasco, tâmara, ameixa, cranberry e mais. A categoria que mais gira no varejo natural.' },
-  { img: '/especiarias.png', name: 'Especiarias', desc: 'Pimenta, canela, cúrcuma, gengibre, noz-moscada. Margem alta, ticket fácil.' },
-  { img: '/grãos.png', name: 'Grãos', desc: 'Quinoa, amaranto, trigo, aveia, cevada e cereais integrais. Compra recorrente, cliente fiel.' },
-  { img: '/sementes.png', name: 'Sementes', desc: 'Chia, linhaça, girassol, abóbora, gergelim. O básico que toda loja natural tem que ter sempre.' },
-  { img: '/chas.png', name: 'Chás', desc: 'Ervas medicinais, funcionais e blends especiais. Sazonalidade que rende o ano inteiro.' },
-  { img: '/chips.png', name: 'Chips', desc: 'Chips de frutas, legumes e vegetais desidratados. Categoria nova, espaço pra crescer.' },
-  { img: '/drageados.png', name: 'Drageados', desc: 'Castanhas e frutas cobertas com chocolate. Impulso de balcão, ticket extra.' },
-  { img: '/farinaceos.png', name: 'Farináceos', desc: 'Farinhas especiais, amidos e misturas pra panificação. Pega a onda da panificação saudável.' },
+  { img: '/Frutas secas.png', name: 'Frutas secas', desc: 'Uva passa, damasco, tâmara, ameixa e cranberry. É a categoria de maior giro no varejo natural.' },
+  { img: '/especiarias.png', name: 'Especiarias', desc: 'Pimenta, canela, cúrcuma, gengibre e noz-moscada, em embalagem de varejo e a granel.' },
+  { img: '/grãos.png', name: 'Grãos', desc: 'Quinoa, amaranto, trigo, aveia, cevada e cereais integrais. Itens de compra recorrente.' },
+  { img: '/sementes.png', name: 'Sementes', desc: 'Chia, linhaça, girassol, abóbora e gergelim. Linha básica, presente em toda loja do setor.' },
+  { img: '/chas.png', name: 'Chás', desc: 'Ervas medicinais, funcionais e blends. Demanda distribuída ao longo do ano.' },
+  { img: '/chips.png', name: 'Chips', desc: 'Frutas, legumes e vegetais desidratados. Categoria em expansão no varejo natural.' },
+  { img: '/drageados.png', name: 'Drageados', desc: 'Castanhas e frutas cobertas com chocolate. Produto de ponto de venda e compra por impulso.' },
+  { img: '/farinaceos.png', name: 'Farináceos', desc: 'Farinhas especiais, amidos e misturas para panificação, incluindo linhas sem glúten.' },
 ]
 
 export default function Products() {
@@ -59,9 +59,9 @@ export default function Products() {
     <section className="products section" id="produtos">
       <div className="container">
         <div className="sec-header reveal" ref={headerRef}>
-          <span className="label">O que sua loja precisa</span>
-          <h2 className="sec-title"><span className="accent">8 categorias.</span><br />Mais de 1.000 produtos.</h2>
-          <p className="sec-sub">Da matéria-prima ao produto pronto pra gôndola. Você monta o pedido como sua loja precisa e a Bedin entrega tudo junto.</p>
+          <span className="label">Portfólio</span>
+          <h2 className="sec-title">Oito categorias, <span className="accent">mais de 1.000 itens em catálogo</span>.</h2>
+          <p className="sec-sub">O catálogo cobre da matéria-prima ao produto embalado para gôndola. O pedido é montado conforme a necessidade da loja e entregue em uma única operação.</p>
         </div>
         <div className="products__grid">
           {categories.map((cat, i) => (
@@ -75,7 +75,7 @@ export default function Products() {
           ))}
         </div>
         <div className="products__cta reveal" ref={ctaRef}>
-          <a href="#cotacao" className="btn btn-filled large" onClick={handleScroll}>Solicitar cotação dos produtos</a>
+          <a href="#cotacao" className="btn btn-filled" onClick={handleScroll}>Solicitar cotação</a>
         </div>
       </div>
     </section>

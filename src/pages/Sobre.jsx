@@ -89,11 +89,16 @@ export default function Sobre() {
               </p>
             </div>
             <div className="sobre-hero__visual">
-              <img src="/imagem-familia.webp" alt="Jean e Juli Bedin, fundadores da Bedin Representações, em Biguaçu, SC" width="600" height="500" loading="lazy" />
-              <div className="sobre-hero__badge">
-                <span className="num">2016</span>
-                <span className="txt">Grande Florianópolis</span>
-              </div>
+              <dl className="sobre-hero__ficha">
+                <div><dt>Fundação</dt><dd>Outubro de 2016</dd></div>
+                <div><dt>Origem dos sócios</dt><dd>Concórdia, SC</dd></div>
+                <div><dt>Sede</dt><dd>Biguaçu, SC</dd></div>
+                <div><dt>Equipe</dt><dd>12 profissionais</dd></div>
+                <div><dt>Indústrias representadas</dt><dd>Mais de 30</dd></div>
+                <div><dt>Lojas atendidas por mês</dt><dd>Mais de 200</dd></div>
+                <div><dt>Itens em catálogo</dt><dd>Mais de 1.000</dd></div>
+                <div><dt>Avaliação no Google</dt><dd>4,9 de 5</dd></div>
+              </dl>
             </div>
           </div>
         </section>
@@ -162,8 +167,8 @@ export default function Sobre() {
         <section className="sobre-cta">
           <div className="container">
             <Reveal className="sobre-cta__card">
-              <h2>Pronto pra ter a Bedin do seu lado?</h2>
-              <p>Manda no WhatsApp os produtos que você precisa. A gente devolve cotação em até 24h úteis, com preço, prazo e disponibilidade. Sem custo, sem compromisso.</p>
+              <h2>Solicite uma cotação</h2>
+              <p>Envie pelo WhatsApp a relação de itens que a sua loja precisa. A Bedin responde em até 24 horas úteis com preço, prazo e disponibilidade, sem compromisso.</p>
               <a
                 href="https://wa.me/5548998680025?text=Ol%C3%A1%20Bedin%2C%20vim%20pelo%20site%20e%20quero%20uma%20cota%C3%A7%C3%A3o!"
                 target="_blank"

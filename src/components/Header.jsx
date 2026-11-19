@@ -2,12 +2,16 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { trackWhatsApp } from '../analytics'
 
-export default function Header() {
+export default function Header({ acesso = null }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const headerRef = useRef(null)
   const location = useLocation()
-  const isHome = location.pathname === '/'
+  // /v2 é uma home alternativa: usa âncoras internas, como a home.
+  // Sem isso o menu levava para a home antiga e trocava de layout no meio da navegação.
+  const isHome = location.pathname === '/' || location.pathname === '/v1'
+  /* a versão retrofitada agora é a home; /v1 é a anterior, preservada */
+  const isV2 = location.pathname === '/'
   const current = path => (location.pathname === path ? 'page' : undefined)
 
   useEffect(() => {
@@ -40,11 +44,24 @@ export default function Header() {
   return (
     <header ref={headerRef} className={`header${scrolled ? ' scrolled' : ''}`} id="header">
       <div className="container header__inner">
-        <a href="#" className="header__logo">
+        <a
+          href={isV2 ? '/' : '#'}
+          className="header__logo"
+          onClick={e => {
+            if (isV2) { e.preventDefault(); closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }) }
+          }}
+        >
           <img src="/logo vetorizado Bedin.png" alt="Bedin Representação" height="40" />
         </a>
         <nav className={`header__nav${menuOpen ? ' open' : ''}`} id="nav">
-          {isHome ? (
+          {isV2 ? (
+            <>
+              <a href="#fornecedores" onClick={e => handleNavClick(e, '#fornecedores')}>Fornecedores</a>
+              <a href="#depoimentos" onClick={e => handleNavClick(e, '#depoimentos')}>Depoimentos</a>
+              <a href="#faq" onClick={e => handleNavClick(e, '#faq')}>Dúvidas</a>
+              <a href="#cotacao" onClick={e => handleNavClick(e, '#cotacao')}>Cotação</a>
+            </>
+          ) : isHome ? (
             <>
               <Link to="/sobre" onClick={closeMenu}>Sobre nós</Link>
               <Link to="/como-funciona" onClick={closeMenu}>Como funciona</Link>
@@ -75,6 +92,17 @@ export default function Header() {
             </svg>
             Falar agora<span className="header__wa-num"> · (48) 99868-0025</span>
           </a>
+          {acesso && (
+            <a
+              href={acesso.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="header__acesso"
+              onClick={acesso.onClick}
+            >
+              {acesso.label}
+            </a>
+          )}
           <button
             className={`hamburger${menuOpen ? ' active' : ''}`}
             id="hamburger"

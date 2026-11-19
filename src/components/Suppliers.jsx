@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import { trackWhatsApp } from '../analytics'
 
 const logos = [
@@ -32,56 +31,39 @@ const logos = [
 ]
 
 export default function Suppliers() {
-  const headerRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target) }
-        })
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -32px 0px' }
-    )
-    if (headerRef.current) observer.observe(headerRef.current)
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section className="suppliers">
-      <div className="suppliers__header reveal" ref={headerRef}>
-        <span className="label">Quem está por trás da sua gôndola</span>
-        <h2 className="sec-title"><span className="accent">+30 fornecedores selecionados.</span> Uma curadoria construída em 10 anos.</h2>
-        <p className="sec-sub">Cada fornecedor foi escolhido por qualidade comprovada, regularidade de entrega e potencial de giro no varejo natural. Você compra de quem a gente compraria.</p>
-      </div>
-      <div className="marquee-wrap">
-        <div className="marquee-track">
-          <div className="marquee-inner" aria-hidden="false">
-            {logos.map((l, i) => (
-              <div className="logo-item" key={i}>
-                <img src={l.src} alt={l.alt} />
-              </div>
-            ))}
-          </div>
-          <div className="marquee-inner" aria-hidden="true">
-            {logos.map((l, i) => (
-              <div className="logo-item" key={`dup-${i}`}>
-                <img src={l.src} alt="" />
-              </div>
-            ))}
-          </div>
+    <section className="suppliers" id="fornecedores">
+      <div className="container">
+        <div className="suppliers__header">
+          <span className="label">Indústrias representadas</span>
+          <h2 className="sec-title">
+            Mais de 30 fornecedores, <span className="accent">selecionados ao longo de dez anos</span>.
+          </h2>
+          <p className="sec-sub">
+            O portfólio é montado com base em três critérios: consistência de qualidade,
+            regularidade de entrega e giro comprovado no varejo natural.
+          </p>
         </div>
-      </div>
-      <div className="suppliers__cta">
-        <a
-          href="https://wa.me/5548998680025?text=Ol%C3%A1%20Bedin%2C%20quero%20receber%20a%20lista%20completa%20dos%20fornecedores%20parceiros!"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-filled large"
-          onClick={() => trackWhatsApp('fornecedores')}
-        >
-          Receber a lista completa dos fornecedores no WhatsApp
-        </a>
+
+        <div className="suppliers__grid">
+          {logos.map(l => (
+            <div className="logo-item" key={l.alt}>
+              <img src={l.src} alt={l.alt} loading="lazy" />
+            </div>
+          ))}
+        </div>
+
+        <div className="suppliers__cta">
+          <a
+            href="https://wa.me/5548998680025?text=Ol%C3%A1%2C%20gostaria%20de%20receber%20a%20rela%C3%A7%C3%A3o%20completa%20de%20fornecedores."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-tonal"
+            onClick={() => trackWhatsApp('fornecedores')}
+          >
+            Receber a relação completa
+          </a>
+        </div>
       </div>
     </section>
   )

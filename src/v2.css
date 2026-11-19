@@ -1,0 +1,1748 @@
+/* ============================================================
+   V2 — versão de avaliação
+   Estrutura estudada no mercos.com, cores da Bedin.
+
+   A Mercos usa DUAS cores com papéis que não se misturam:
+     roxo  #6c35a4 → identidade (fundos, blocos)
+     verde #08c969 → ação (botões)
+
+   A Bedin tem uma cor só. Aqui ela cumpre os dois papéis em
+   intensidades diferentes, escolhidas por contraste medido:
+     --v2-deep  #2e400c  identidade. Branco por cima = 11.3:1
+     --v2-brand #93c020  ação. Texto escuro por cima = 7.8:1
+     A marca sobre o fundo profundo = 5.3:1 (lê bem)
+
+   Nenhuma cor nova foi inventada: #2e400c é o próprio verde da
+   marca escurecido, não um segundo tom de outra família.
+============================================================ */
+.v2 {
+  /* verde da logo (#93c020) escurecido só o necessário para o branco ler
+     (6.8:1). Mantém o matiz vivo — o musgo anterior puxava para o marrom. */
+  /* Era #3d6519 (verde escuro). Trocado pelo tom mais claro que ainda
+     sustenta branco por cima (4.94:1) e passa como texto sobre branco.
+     Um token só, para o escuro não voltar por nenhum caminho. */
+  /* TEXTO verde sobre fundo BRANCO (rótulos, números, links). O #93c020
+     da logo aqui dá 2.14 e some no branco — este é o caso inverso ao dos
+     botões, onde o verde é o FUNDO. Tom mais claro que ainda lê: 4.94. */
+  --v2-deep:        #5c7a15;
+  --v2-deep-soft:   #4a7c1f;
+  /* Fundo de bloco no verde mais CLARO que ainda sustenta texto branco:
+     4.94:1. O #93c020 da marca daria 2.14 e deixaria o texto lavado. */
+  --v2-block:       #93c020;
+  /* VERDE DA LOGO, amostrado do arquivo (13.178 px da cor dominante).
+     Decisão do cliente: usar o verde exato da marca com texto branco,
+     ciente de que o contraste fica em 2.14 (abaixo dos 4.5 do WCAG). */
+  --v2-brand:       #93c020;
+  --v2-brand-hover: #84ad1c;
+  --v2-on-brand:    #ffffff;
+  --v2-logo:        #93c020;
+  --v2-ink:         #1c1f1d;
+  --v2-muted:       #5a615c;
+
+  /* Neutros FRIOS, como no mercos.com: o KB registra "o fundo dominante
+     é branco, não um bege ou cinza quente". Os valores anteriores
+     (#e2ded6 / #faf9f7) vinham do site antigo e puxavam para o bege,
+     o que suja o verde da marca quando os dois encostam. */
+  --v2-line:        #e9e9e9;
+  --v2-surface:     #ffffff;
+  --v2-surface-alt: #fafafa;
+
+  /* O mercos.com usa Montserrat em títulos e corpo, Open Sans em texto longo. */
+  --v2-font-display: 'Montserrat', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --v2-font-body:    'Open Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* 13px era o tamanho mais frequente da página; no mercos.com o texto
+     de card é 14px/21px. Redefinido só aqui — a home segue em 13px. */
+  --body-sm: 0.875rem;   /* 14px */
+
+  /* Padding de card e gap de grade, medidos no card de depoimento do
+     mercos.com (30px vertical / 35px horizontal, gap 20px). Havia seis
+     paddings e três gaps diferentes entre grades de mesmo papel. */
+  --v2-card-pad: 30px 35px;
+  --v2-card-gap: 20px;
+
+  /* Botões. O principal tem 56px de altura (mercos.com: 57px); o
+     secundário é uma escala menor coerente, não um valor avulso.
+     O gap entre botões de um par é o mesmo em toda a página. */
+  --v2-btn-pad:    18px 28px;
+  --v2-btn-pad-sm: 12px 20px;
+  --v2-btn-gap:    12px;
+}
+
+/* A fonte vale para toda a v2, sem afetar a home */
+.v2, .v2 input, .v2 textarea, .v2 button, .v2 select {
+  font-family: var(--v2-font-display);
+}
+.v2 p, .v2 li, .v2 dd, .v2 figcaption, .v2 label {
+  font-family: var(--v2-font-body);
+}
+.v2 h1, .v2 h2, .v2 h3, .v2 .btn, .v2 strong {
+  font-family: var(--v2-font-display);
+}
+
+/* O header fica claro; a página começa em branco como no mercos.com */
+.v2 .header { background: rgba(255,255,255,0.96); }
+
+/* ============================================================
+   HEADER — medidas do mercos.com:
+   58px de altura, position:fixed, fundo branco sem borda visível,
+   padding lateral de 40px (borda a borda, sem container de 1200px),
+   links 15px/600 #494949, CTA sólido + link de acesso separado.
+============================================================ */
+.v2 .header {
+  height: 58px;
+  padding: 0;
+  background: #fff;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  transition: border-color 200ms;
+}
+/* a linha só aparece depois de rolar, como no mercos.com */
+.v2 .header.scrolled { border-bottom-color: #ececec; }
+
+.v2 .header .header__inner {
+  height: 58px;
+  max-width: none;
+  padding: 0 40px;
+  gap: var(--s6);
+}
+
+/* O logo da Bedin é quadrado (230x237); o do mercos é horizontal (121x24).
+   Esticar deformaria, então o símbolo fica compacto e o nome vai ao lado,
+   formando um conjunto horizontal de proporção parecida. */
+.v2 .header .header__logo img { height: 38px; width: auto; }
+
+.v2 .header .header__nav { gap: 28px; }
+.v2 .header .header__nav a {
+  font-family: var(--v2-font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: #494949;
+  padding: var(--s1) 0;
+  border-bottom: 2px solid transparent;
+}
+.v2 .header .header__nav a:hover { color: var(--v2-deep); border-bottom-color: transparent; }
+.v2 .header .header__nav a[aria-current="page"] { color: var(--v2-deep); border-bottom-color: var(--v2-brand); }
+
+/* Bloco de ações à direita: CTA sólido + link de acesso, como "Fazer login ›" */
+.v2 .header .header__actions { gap: 20px; }
+.v2 .header .btn-whatsapp {
+  background: var(--v2-brand);
+  color: var(--v2-on-brand);
+  border: 1px solid var(--v2-brand);
+  border-radius: 4px;
+  padding: 9px 16px;
+  font-family: var(--v2-font-display);
+  font-size: 14px;
+  font-weight: 600;
+  height: 39px;
+}
+.v2 .header .btn-whatsapp:hover { background: var(--v2-brand-hover); border-color: var(--v2-brand-hover); }
+/* o CTA do mercos tem 134px: texto curto, sem o telefone.
+   O número continua no rodapé e na seção de contato. */
+.v2 .header .btn-whatsapp .header__wa-num { display: none; }
+
+/* o link de acesso do mercos: sem moldura, peso 700, com chevron */
+.v2 .header__acesso {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--v2-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--v2-ink);
+  white-space: nowrap;
+  transition: color 150ms;
+}
+.v2 .header__acesso:hover { color: var(--v2-deep); }
+.v2 .header__acesso::after { content: '›'; font-size: 18px; line-height: 1; }
+
+@media (max-width: 1100px) {
+  .v2 .header .header__inner { padding: 0 24px; }
+  .v2 .header .header__nav { gap: 20px; }
+}
+@media (max-width: 960px) {
+  .v2 .header__acesso { display: none; }
+}
+/* ============================================================
+   BOTÕES — a cor de ação é exclusiva (R-004)
+============================================================ */
+.v2 .btn { border-radius: 6px; font-size: 15px; font-weight: 600; }
+
+.v2 .v2-btn-primary {
+  background: var(--v2-brand);
+  color: var(--v2-on-brand);
+  padding: var(--v2-btn-pad);
+  min-width: 241px;
+  border: 1px solid var(--v2-brand);
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.v2 .v2-btn-primary:hover { background: var(--v2-brand-hover); border-color: var(--v2-brand-hover); }
+
+/* O secundário do mercos.com é contornado na MESMA cor do primário,
+   não em cinza. É o que mantém o par visualmente unido. */
+.v2 .v2-btn-outline {
+  background: var(--v2-surface-alt);
+  color: var(--v2-deep);
+  padding: var(--v2-btn-pad);
+  min-width: 241px;
+  border: 1px solid var(--v2-brand);
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.v2 .v2-btn-outline:hover { background: #fff; border-color: var(--v2-deep); }
+
+/* dentro do bloco verde a borda não pode ser --v2-brand: é a mesma cor
+   do fundo e o botão desaparece. */
+.v2 .v2-btn-outline-light {
+  background: transparent;
+  color: #fff;
+  padding: var(--v2-btn-pad);
+  min-width: 241px;
+  border: 1px solid rgba(255,255,255,0.75);
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.v2 .v2-btn-outline-light:hover { background: rgba(147,192,32,0.16); }
+
+.v2 .v2-btn-ghost {
+  background: transparent;
+  color: var(--v2-deep);
+  padding: var(--v2-btn-pad-sm);
+  border: 1px solid var(--v2-line);
+  border-radius: 6px;
+  font-size: 14px;
+}
+.v2 .v2-btn-ghost:hover { border-color: var(--v2-deep); background: var(--v2-surface-alt); }
+
+/* ============================================================
+   CABEÇALHO DE SEÇÃO — centralizado, como no mercos.com
+============================================================ */
+/* O ritmo do mercos.com é de seções altas (média 1.040px) e encostadas:
+   o respiro vem do padding interno, não de margem entre blocos.
+   96px de padding e 64px sob o cabeçalho aproximam esse ritmo. */
+.v2 .section { padding: var(--s24) 0; }
+/* `.v2 .section` vence a regra mobile do index.css, que tem menos
+   especificidade — por isso o breakpoint precisa ser repetido aqui. */
+@media (max-width: 768px) {
+  .v2 .section,
+  .v2-marca { padding: var(--s12) 0; }
+}
+
+.v2-sec-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--s16);
+}
+/* sem declarar a família, herdava Work Sans do index.css (fonte da home) */
+.v2-sec-head .label {
+  display: block;
+  font-family: var(--v2-font-display);
+  color: var(--v2-deep);
+  margin-bottom: var(--s3);
+}
+.v2-sec-head h2 {
+  font-family: var(--v2-font-display);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.7px;
+  color: var(--v2-ink);
+  margin-bottom: var(--s4);
+}
+.v2-sec-head p {
+  font-size: var(--body-lg);
+  color: var(--v2-muted);
+  line-height: 1.65;
+}
+@media (max-width: 700px) {
+  .v2-sec-head h2 { font-size: 25px; }
+  /* o ghost ficava em 43px, 1px abaixo do alvo de toque de 44px */
+  .v2 .v2-btn-ghost { padding: 13px 20px; }
+}
+
+/* ============================================================
+   1. HERO — centralizado. O H1 do mercos.com tem 36px:
+   a presença vem do espaço em branco, não do tamanho.
+============================================================ */
+.v2-hero {
+  background: var(--v2-surface);
+  /* 150px acima do H1 é a medida do mercos.com; a base acompanha o
+     novo ritmo das demais seções. */
+  padding: 150px 0 var(--s24);
+  text-align: center;
+}
+.v2-hero__eyebrow {
+  display: inline-block;
+  font-size: var(--label-md);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--v2-deep);
+  margin-bottom: var(--s5);
+}
+/* 19ch espremia o título em 4 linhas. O mercos.com usa o mesmo corpo de
+   36px, mas deixa o texto correr até ~745px e fechar em 2 linhas. */
+.v2-hero__title {
+  font-family: var(--v2-font-display);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: -0.02em;
+  color: var(--v2-ink);
+  max-width: 17ch;
+  margin: 0 auto var(--s5);
+  text-wrap: balance;
+}
+.v2-hero__title .accent { color: var(--v2-deep); }
+.v2-hero__sub {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--v2-muted);
+  line-height: 1.65;
+  max-width: 58ch;
+  margin: 0 auto var(--s8);
+  text-wrap: pretty;
+}
+.v2-hero__ctas {
+  display: flex;
+  gap: var(--v2-btn-gap);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--s4);
+}
+/* IMP-001 — a nota que remove o risco, no ponto da decisão */
+.v2-hero__nota {
+  font-size: 12px;
+  color: var(--v2-muted);
+  margin-bottom: var(--s16);
+}
+
+.v2-hero__visual { margin-top: var(--s4); }
+
+/* legenda sob o cartão do celular, na seção de cobertura */
+.v2-cobertura__legenda {
+  margin: var(--s3) 0 0;
+  font-size: 12px;
+  color: var(--v2-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+.v2-cobertura__legenda span { display: block; opacity: 0.8; }
+
+/* Painel do hero — o mercos.com mostra o produto num painel de 980px
+   com barra de título. Aqui o "produto" da Bedin é o catálogo. */
+.v2-hero__painel {
+  max-width: 980px;
+  margin: 0 auto;
+  border: 1px solid var(--v2-line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 16px 40px -8px rgba(28,31,29,0.14);
+}
+.v2-hero__painel-barra {
+  background: var(--v2-deep);
+  color: #fff;
+  padding: var(--s3) var(--s5);
+  font-size: var(--body-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+.v2-hero__painel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--v2-line);
+}
+.v2-hero__painel-grid figure {
+  background: #fff;
+  margin: 0;
+  padding: var(--s5) var(--s3) var(--s4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s2);
+}
+.v2-hero__painel-grid img {
+  width: 100%;
+  max-width: 120px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.v2-hero__painel-grid figcaption {
+  font-size: var(--body-sm);
+  font-weight: 600;
+  color: var(--v2-muted);
+}
+.v2-hero__legenda {
+  margin-top: var(--s4);
+  font-size: var(--body-sm);
+  color: var(--v2-muted);
+}
+
+@media (max-width: 900px) {
+  .v2-hero { padding: 112px 0 var(--s12); }
+  .v2-hero__painel-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .v2-hero__title { font-size: 32px; max-width: 100%; }
+  .v2-hero__ctas { flex-direction: column; }
+  .v2-hero__ctas .btn { width: 100%; }
+}
+
+/* ============================================================
+   2. MÉTRICAS — prova antes da explicação (R-001).
+   Cards com borda, sem sombra, números estáticos (R-005).
+============================================================ */
+.v2-metricas {
+  background: var(--v2-surface);
+  /* topo em 0 de propósito: a faixa encosta no hero, como no mercos.com,
+     onde a prova vem imediatamente depois da promessa. */
+  padding: 0 0 var(--s24);
+}
+.v2-metricas__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--v2-card-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* o 5º card centraliza sob os quatro, como no mercos.com */
+.v2-metricas__grid li:nth-child(5) {
+  grid-column: 2 / 4;
+  max-width: 260px;
+  justify-self: center;
+  width: 100%;
+}
+/* mais compacto que os demais: carrega só número e rótulo */
+.v2-metricas__grid li {
+  border: 1px solid var(--v2-line);
+  border-radius: 10px;
+  border-top: 3px solid var(--v2-brand);
+  padding: var(--s6) var(--s5);
+  text-align: center;
+}
+.v2-metricas__num {
+  display: block;
+  font-family: var(--v2-font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--v2-ink);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.v2-metricas__label {
+  display: block;
+  margin-top: var(--s2);
+  font-size: var(--body-sm);
+  color: var(--v2-muted);
+  line-height: 1.45;
+}
+.v2-metricas__reforco {
+  text-align: center;
+  margin-top: var(--s8);
+  font-size: var(--body-lg);
+  color: var(--v2-muted);
+}
+.v2-metricas__reforco strong { color: var(--v2-deep); font-weight: 700; }
+
+/* Em 3 colunas o 5º card ocupa a do meio; em 2 colunas ele atravessa as duas.
+   Sem este reset, o `grid-column: 2 / 4` do desktop pede uma 3ª coluna que
+   não existe e o navegador cria uma faixa implícita fora da tela. */
+@media (max-width: 1000px) {
+  .v2-metricas__grid { grid-template-columns: repeat(3, 1fr); }
+  .v2-metricas__grid li:nth-child(5) { grid-column: 2 / 3; }
+}
+@media (max-width: 620px) {
+  .v2-metricas__grid { grid-template-columns: repeat(2, 1fr); }
+  .v2-metricas__grid li:nth-child(5) { grid-column: 1 / 3; max-width: none; }
+}
+
+/* ============================================================
+   3. PARA QUEM É
+============================================================ */
+.v2-publicos { background: var(--v2-surface-alt); border-top: 1px solid var(--v2-line); }
+.v2-publicos__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--v2-card-gap);
+}
+.v2-publico {
+  background: #fff;
+  border: 1px solid var(--v2-line);
+  border-radius: 10px;
+  padding: var(--v2-card-pad);
+}
+.v2-publico h3 {
+  font-family: var(--v2-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--v2-ink);
+  margin-bottom: var(--s3);
+}
+.v2-publico p {
+  font-size: var(--body-md);
+  color: var(--v2-muted);
+  line-height: 1.65;
+  margin-bottom: var(--s5);
+}
+.v2-publico ul { list-style: none; margin: 0; padding: 0; }
+.v2-publico li {
+  font-size: var(--body-sm);
+  color: var(--v2-ink);
+  padding: var(--s2) 0 var(--s2) var(--s5);
+  position: relative;
+  border-top: 1px solid var(--v2-line);
+}
+.v2-publico li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--v2-brand);
+  transform: translateY(-50%);
+}
+@media (max-width: 900px) { .v2-publicos__grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   4. DIFERENCIAIS
+============================================================ */
+.v2-dif { background: var(--v2-surface); }
+/* 4 colunas para os 4 diferenciais: em 3 colunas sobrava um buraco
+   na segunda linha depois que os repetidos saíram. */
+.v2-dif__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--v2-card-gap);
+}
+.v2-dif__card { padding: var(--s6) 0 0; border-top: 2px solid var(--v2-brand); }
+.v2-dif__num {
+  display: block;
+  font-family: var(--v2-font-display);
+  font-size: var(--body-sm);
+  font-weight: 700;
+  color: var(--v2-deep);
+  margin-bottom: var(--s3);
+  font-variant-numeric: tabular-nums;
+}
+.v2-dif__card h3 {
+  font-family: var(--v2-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--v2-ink);
+  margin-bottom: var(--s2);
+  line-height: 1.35;
+}
+.v2-dif__card p {
+  font-size: var(--body-md);
+  color: var(--v2-muted);
+  line-height: 1.65;
+}
+@media (max-width: 900px) { .v2-dif__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .v2-dif__grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   FAQ — objeções logo antes do fechamento (R-009 do mercos.com).
+   Fundo branco para separar da seção de depoimentos, que é alt.
+   Duas colunas: perguntas agrupadas + cartão de saída, no lugar
+   do vão morto que sobrava à direita do acordeão.
+============================================================ */
+.v2-faq { background: var(--v2-surface); border-top: 1px solid var(--v2-line); }
+.v2-faq__grid {
+  display: grid;
+  grid-template-columns: 1fr 318px;
+  gap: var(--s10);
+  align-items: start;
+}
+.v2-faq__bloco + .v2-faq__bloco { margin-top: var(--s8); }
+.v2-faq__grupo {
+  font-family: var(--v2-font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--v2-deep);
+  margin: 0 0 var(--s2);
+}
+.v2-faq__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--v2-line);
+}
+.v2-faq__item { border-bottom: 1px solid var(--v2-line); }
+.v2-faq__h { margin: 0; font-size: inherit; font-weight: inherit; }
+.v2-faq__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: var(--s4) 0;
+  font-family: var(--v2-font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--v2-ink);
+  transition: color 150ms;
+}
+.v2-faq__q:hover { color: var(--v2-deep); }
+.v2-faq__q:focus-visible { outline: 2px solid var(--v2-deep); outline-offset: 2px; }
+.v2-faq__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 16px; height: 16px;
+}
+.v2-faq__icon::before,
+.v2-faq__icon::after {
+  content: '';
+  position: absolute;
+  background: var(--v2-deep);
+  transition: transform 250ms ease, opacity 250ms ease;
+}
+.v2-faq__icon::before { left: 0; top: 7px; width: 16px; height: 2px; }
+.v2-faq__icon::after  { left: 7px; top: 0; width: 2px; height: 16px; }
+.v2-faq__item.is-open .v2-faq__icon::after { transform: scaleY(0); opacity: 0; }
+.v2-faq__a { padding: 0 0 var(--s5); max-width: 62ch; }
+.v2-faq__a p {
+  margin: 0;
+  font-size: var(--body-md);
+  color: var(--v2-muted);
+  line-height: 1.7;
+}
+
+/* cartão de saída — a seção não termina em beco sem saída */
+.v2-faq__ajuda {
+  background: var(--v2-surface-alt);
+  border: 1px solid var(--v2-line);
+  border-radius: 10px;
+  padding: var(--v2-card-pad);
+}
+.v2-faq__ajuda h3 {
+  font-family: var(--v2-font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--v2-ink);
+  margin: 0 0 var(--s3);
+  line-height: 1.3;
+}
+.v2-faq__ajuda p {
+  margin: 0 0 var(--s5);
+  font-size: var(--body-md);
+  color: var(--v2-muted);
+  line-height: 1.65;
+}
+.v2-faq__ajuda .btn { width: 100%; justify-content: center; }
+.v2-faq__dados {
+  margin: var(--s5) 0 0;
+  padding-top: var(--s5);
+  border-top: 1px solid var(--v2-line);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+.v2-faq__dados > div { display: flex; justify-content: space-between; gap: var(--s3); }
+.v2-faq__dados dt { font-size: var(--body-sm); color: var(--v2-muted); }
+.v2-faq__dados dd {
+  margin: 0;
+  font-size: var(--body-sm);
+  font-weight: 600;
+  color: var(--v2-ink);
+  text-align: right;
+}
+
+.v2-faq__ajuda-nota {
+  margin: var(--s5) 0 0;
+  padding-top: var(--s5);
+  border-top: 1px solid var(--v2-line);
+  font-size: var(--body-sm);
+  color: var(--v2-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .v2-faq__grid { grid-template-columns: 1fr; gap: var(--s8); }
+}
+
+/* ============================================================
+   8. CTA FINAL — bloco na cor de identidade (papel do roxo)
+============================================================ */
+.v2-final {
+  background: var(--v2-surface);
+  padding: var(--s24) 0;
+}
+.v2-final__card {
+  background: var(--v2-block);
+  /* sem isto o card herda o texto escuro do body: cada filho precisava
+     redefinir a cor, e qualquer elemento novo nasceria ilegível. */
+  color: #fff;
+  border-radius: 10px;
+  /* o bloco fecha logo após o conteúdo; sobrava ~96px de verde morto */
+  padding: var(--s12) var(--s12);
+  text-align: center;
+}
+.v2-final__card h2 {
+  font-family: var(--v2-font-display);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: #fff;
+  max-width: 20ch;
+  margin: 0 auto var(--s4);
+}
+/* sobre o fundo mais claro, 80% caía para 3.81; 95% dá 4.64 */
+.v2-final__card > p {
+  font-size: var(--body-lg);
+  color: rgba(255,255,255,0.95);
+  line-height: 1.65;
+  max-width: 56ch;
+  margin: 0 auto var(--s8);
+}
+.v2-final__ctas {
+  display: flex;
+  gap: var(--v2-btn-gap);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--s4);
+}
+/* Precisa casar a especificidade de `.v2-final__card > p`, que senão
+   vence e renderiza a nota em 16px, do mesmo tamanho do texto de apoio.
+   Branco a 65% sobre --v2-deep dá 4.4:1; a 78% passa de 4.5. */
+.v2-final__card > p.v2-final__nota {
+  font-size: 13px;
+  color: rgba(255,255,255,0.95);
+  margin: 0;
+  max-width: none;
+}
+
+/* reforço de escala no fechamento */
+.v2-final__prova {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--s4) var(--s10);
+  margin: var(--s8) 0 0;
+  padding: var(--s6) 0 0;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+.v2-final__prova li {
+  font-size: var(--body-sm);
+  color: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+}
+.v2-final__prova strong {
+  font-family: var(--v2-font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+@media (max-width: 700px) {
+  .v2-final__card { padding: var(--s10) var(--s5); }
+  .v2-final__card h2 { font-size: 25px; }
+  .v2-final__ctas { flex-direction: column; }
+  .v2-final__ctas .btn { width: 100%; }
+  .v2-final__prova {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s3);
+  }
+}
+
+/* ============================================================
+   9. BARRA CLIENTE / PROSPECTO (IMP-004)
+============================================================ */
+.v2-cliente {
+  background: var(--v2-surface-alt);
+  border-top: 1px solid var(--v2-line);
+  border-bottom: 1px solid var(--v2-line);
+  padding: var(--s5) 0;
+}
+.v2-cliente__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s5);
+  flex-wrap: wrap;
+}
+.v2-cliente span { font-size: var(--body-md); color: var(--v2-muted); }
+
+/* ============================================================
+   Ajustes nos componentes reaproveitados, para caber na v2
+============================================================ */
+.v2 .suppliers__header,
+.v2 .reviews .sec-header { text-align: center; margin-left: auto; margin-right: auto; }
+.v2 .suppliers__cta { text-align: center; }
+.v2 .suppliers .sec-title,
+.v2 .reviews .sec-title { font-size: 32px; }
+.v2 .suppliers .sec-title .accent,
+.v2 .reviews .sec-title .accent { color: var(--v2-deep); }
+.v2 .contact .sec-title .accent { color: var(--v2-deep); }
+.v2 .label { color: var(--v2-deep); }
+.v2 .btn-filled { background: var(--v2-brand); color: var(--v2-on-brand); }
+.v2 .btn-filled:hover { background: var(--v2-brand-hover); }
+
+@media (prefers-reduced-motion: reduce) {
+  .v2 * { transition: none !important; }
+}
+
+/* ============================================================
+   FORNECEDORES — faixa rolando (slide 40s linear infinite),
+   como a do mercos.com. A lista é duplicada no JSX para o
+   laço não ter emenda: o trilho anda exatamente -50%.
+============================================================ */
+/* não usa .section (precisa de overflow:hidden para a esteira),
+   então o padding acompanha o das demais seções manualmente */
+.v2-marca {
+  background: var(--v2-surface);
+  border-top: 1px solid var(--v2-line);
+  padding: var(--s24) 0;
+  overflow: hidden;
+}
+.v2-marca__faixa {
+  position: relative;
+  overflow: hidden;
+  padding: var(--s6) 0;
+  margin-top: var(--s4);
+}
+/* esfuma as pontas, para os logos entrarem e saírem sem corte seco */
+.v2-marca__faixa::before,
+.v2-marca__faixa::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 140px;
+  z-index: 2;
+  pointer-events: none;
+}
+.v2-marca__faixa::before { left: 0;  background: linear-gradient(to right, #fff, rgba(255,255,255,0)); }
+.v2-marca__faixa::after  { right: 0; background: linear-gradient(to left,  #fff, rgba(255,255,255,0)); }
+
+.v2-marca__trilho {
+  display: flex;
+  width: max-content;
+  animation: v2-slide 40s linear infinite;
+}
+.v2-marca__trilho:hover { animation-play-state: paused; }
+.v2-marca__grupo { display: flex; align-items: center; }
+.v2-marca__item {
+  flex: 0 0 auto;
+  width: 190px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s3) var(--s5);
+}
+/* height:100% + object-fit garante que o logo ocupe a caixa:
+   só max-height deixava as imagens largas renderizarem pequenas */
+.v2-marca__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.72;
+  transition: filter 200ms, opacity 200ms;
+}
+.v2-marca__item:hover img { filter: grayscale(0); opacity: 1; }
+.v2-marca__cta { text-align: center; margin-top: var(--s8); }
+
+@keyframes v2-slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-marca__trilho { animation: none; flex-wrap: wrap; justify-content: center; width: 100%; }
+  .v2-marca__grupo[aria-hidden="true"] { display: none; }
+}
+
+/* ============================================================
+   DEPOIMENTOS — dois formatos na mesma seção, como no mercos.com:
+   três cards longos + duas citações curtas, com o selo do Google
+   no topo (prova agregada antes da prova nominal).
+   Card: raio 10px, padding 30/35, branco, sem borda e sem sombra.
+============================================================ */
+.v2-depo { background: var(--v2-surface-alt); border-top: 1px solid var(--v2-line); }
+
+/* selo do Google — prova agregada, no topo da seção */
+.v2-depo__selo {
+  display: flex;
+  align-items: center;
+  gap: var(--s5);
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid var(--v2-line);
+  border-radius: 10px;
+  padding: var(--v2-card-pad);
+  margin-bottom: var(--v2-card-gap);
+}
+.v2-depo__selo-num {
+  font-family: var(--v2-font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--v2-ink);
+  line-height: 1;
+}
+.v2-depo__selo-col { display: flex; flex-direction: column; gap: 4px; }
+.v2-depo__selo-txt { font-size: var(--body-md); color: var(--v2-muted); }
+.v2-depo__selo-txt strong { color: var(--v2-ink); font-weight: 600; }
+.v2-depo__selo-link {
+  margin-left: auto;
+  font-size: var(--body-md);
+  font-weight: 600;
+  color: var(--v2-deep);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.v2-depo__selo-link:hover { text-decoration: underline; }
+
+.v2-depo__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--v2-card-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.v2-depo__card {
+  background: #fff;
+  border-radius: 10px;
+  padding: var(--v2-card-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+.v2-depo__estrelas { color: #C77700; font-size: 15px; letter-spacing: 2px; }
+.v2-depo__estrelas--lg { font-size: 19px; }
+
+/* a frase que o leitor leva embora */
+.v2-depo__puxada {
+  font-family: var(--v2-font-display);
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--v2-ink);
+  margin: 2px 0 0;
+}
+.v2-depo__texto {
+  font-size: var(--body-md);
+  color: var(--v2-muted);
+  line-height: 1.7;
+  flex: 1;
+  margin: 0;
+  /* todos os cards com a mesma altura de texto; o resto vem no Google */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.v2-depo__ler {
+  align-self: flex-start;
+  font-size: var(--body-sm);
+  font-weight: 600;
+  color: var(--v2-deep);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.v2-depo__ler:hover { border-bottom-color: currentColor; }
+
+.v2-depo__autor {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  margin-top: var(--s2);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--v2-line);
+}
+.v2-depo__avatar {
+  width: 42px; height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--v2-deep);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+.v2-depo__autor-info { display: flex; flex-direction: column; }
+.v2-depo__autor strong { font-size: var(--body-md); color: var(--v2-ink); }
+.v2-depo__autor em { font-style: normal; font-size: var(--body-sm); color: var(--v2-muted); }
+
+.v2-depo__rodape {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s6);
+  flex-wrap: wrap;
+  margin-top: var(--s8);
+  padding-top: var(--s8);
+  border-top: 1px solid var(--v2-line);
+}
+.v2-depo__rodape p { margin: 0; font-size: var(--body-md); color: var(--v2-muted); }
+
+@media (max-width: 900px) {
+  .v2-depo__grid { grid-template-columns: 1fr; }
+  .v2-depo__selo-link { margin-left: 0; }
+}
+
+/* ============================================================
+   FORMULÁRIO — card branco, campos de 48px, raio 6px
+============================================================ */
+.v2-contato { background: var(--v2-surface); border-top: 1px solid var(--v2-line); }
+.v2-contato__grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: var(--v2-card-gap);
+  align-items: start;
+}
+.v2-form {
+  background: #fff;
+  border: 1px solid var(--v2-line);
+  border-radius: 10px;
+  padding: var(--v2-card-pad);
+}
+/* O gap horizontal entre dois campos lado a lado tem de ser igual à
+   margem vertical entre linhas (--s5), senão a grade fica irregular. */
+.v2-form__linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s5);
+}
+.v2-campo { margin-bottom: var(--s5); }
+.v2-campo label {
+  display: block;
+  font-size: var(--body-sm);
+  font-weight: 600;
+  color: var(--v2-ink);
+  margin-bottom: var(--s2);
+}
+.v2-campo label span { font-weight: 400; color: var(--v2-muted); }
+.v2-campo input,
+.v2-campo textarea {
+  width: 100%;
+  height: 48px;
+  background: #fff;
+  border: 1px solid #cacaca;
+  border-radius: 6px;
+  padding: 0 var(--s4);
+  font-family: var(--v2-font-body);
+  font-size: 15px;
+  color: var(--v2-ink);
+  outline: none;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+.v2-campo textarea { height: auto; padding: 12px 14px; resize: vertical; min-height: 104px; line-height: 1.6; }
+/* #9a9a9a dava 2.81:1 sobre branco — reprovado. #767676 é o tom mais claro
+   que passa de 4.5:1, e o placeholder aqui carrega exemplo de preenchimento. */
+.v2-campo input::placeholder,
+.v2-campo textarea::placeholder { color: #767676; }
+.v2-campo__dica {
+  display: block;
+  margin-top: var(--s2);
+  font-size: 12px;
+  color: var(--v2-muted);
+  line-height: 1.5;
+}
+.v2-campo input:focus,
+.v2-campo textarea:focus {
+  border-color: var(--v2-brand);
+  box-shadow: 0 0 0 3px rgba(147,192,32,0.22);
+}
+/* passos pós-envio, no painel lateral */
+.v2-contato__passos {
+  margin-top: var(--s6);
+  padding-top: var(--s6);
+  border-top: 1px solid var(--v2-line);
+}
+.v2-contato__passos h4 {
+  margin: 0 0 var(--s3);
+  font-family: var(--v2-font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--v2-deep);
+}
+.v2-contato__passos ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: passo;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+.v2-contato__passos li {
+  counter-increment: passo;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: var(--s3);
+  align-items: start;
+  font-size: var(--body-sm);
+  color: var(--v2-muted);
+  line-height: 1.55;
+}
+.v2-contato__passos li::before {
+  content: counter(passo);
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--v2-deep);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 8px colava o botão no último campo; é a ação principal do formulário
+   e precisa de separação maior que a que há entre campos. */
+.v2-form__enviar { width: 100%; min-width: 0; margin-top: var(--s6); }
+
+/* mensagens de estado após o envio */
+.v2-form__estado:empty { display: none; }
+.v2-form__ok,
+.v2-form__alerta {
+  margin: var(--s4) 0 0;
+  padding: var(--s4);
+  border-radius: 6px;
+  font-size: var(--body-sm);
+  line-height: 1.6;
+}
+.v2-form__ok {
+  background: var(--v2-surface-alt);
+  border-left: 3px solid var(--v2-brand);
+  color: var(--v2-muted);
+}
+.v2-form__ok strong { color: var(--v2-ink); }
+.v2-form__alerta {
+  background: #fdf6e3;
+  border-left: 3px solid #b07000;
+  color: #5a4a2a;
+}
+.v2-form__alerta strong { color: #3d3016; }
+.v2-form__alerta a { color: #7a4e00; font-weight: 600; }
+.v2-form__link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--v2-deep);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.v2-form__nota {
+  text-align: center;
+  font-size: 12px;
+  color: var(--v2-muted);
+  margin-top: var(--s3);
+}
+
+.v2-contato__lado {
+  background: var(--v2-surface-alt);
+  border: 1px solid var(--v2-line);
+  border-radius: 10px;
+  padding: var(--v2-card-pad);
+}
+.v2-contato__lado h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--v2-ink);
+  margin-bottom: var(--s2);
+}
+.v2-contato__lado > p {
+  font-size: var(--body-md);
+  color: var(--v2-muted);
+  line-height: 1.6;
+  margin-bottom: var(--s5);
+}
+.v2-contato__wa { width: 100%; min-width: 0; margin-bottom: var(--s6); }
+.v2-contato__dados { margin: 0; border-top: 1px solid var(--v2-line); }
+.v2-contato__dados div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--v2-line);
+}
+.v2-contato__dados div:last-child { border-bottom: none; }
+.v2-contato__dados dt { font-size: var(--body-sm); color: var(--v2-muted); }
+.v2-contato__dados dd { margin: 0; font-size: var(--body-sm); font-weight: 600; color: var(--v2-ink); }
+
+@media (max-width: 960px) {
+  .v2-contato__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  /* 35px de padding lateral come a largura útil num viewport de 390px;
+     redefinir o token cobre todos os cards de uma vez. */
+  .v2 { --v2-card-pad: 22px 20px; }
+  .v2-form__linha { grid-template-columns: 1fr; gap: 0; }
+  .v2-depo__selo { gap: var(--s4); }
+  .v2-depo__selo-num { font-size: 34px; }
+  .v2-depo__puxada { font-size: 17px; }
+}
+
+/* ============================================================
+   FLUXO DA COTAÇÃO — diagrama
+   Três colunas: a loja, a Bedin e as indústrias (com os logos
+   reais, não caixas genéricas). Abaixo, o ganho em números.
+============================================================ */
+.v2-fluxo { background: var(--v2-surface-alt); border-top: 1px solid var(--v2-line); }
+
+.v2-fluxo__quadro {
+  display: grid;
+  grid-template-columns: 1fr 128px 0.92fr 56px 1.2fr;
+  align-items: center;
+  gap: 0;
+  background: #fff;
+  border: 1px solid var(--v2-line);
+  border-radius: 10px;
+  padding: var(--s8) var(--s6);
+}
+.v2-fluxo__col { display: flex; flex-direction: column; align-items: center; gap: var(--s3); }
+.v2-fluxo__legenda {
+  font-family: var(--v2-font-body);
+  font-size: 12.5px;
+  color: var(--v2-muted);
+  text-align: center;
+}
+
+/* caixa da loja: mostra a lista, em vez de só dizer "sua loja" */
+.v2-fluxo__caixa {
+  width: 100%;
+  border-radius: 8px;
+  padding: var(--s4) var(--s5);
+  text-align: center;
+}
+.v2-fluxo__caixa--loja {
+  background: #fff;
+  border: 1px solid var(--v2-line);
+  text-align: left;
+}
+.v2-fluxo__tag {
+  display: block;
+  font-family: var(--v2-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--v2-ink);
+  margin-bottom: var(--s2);
+}
+.v2-fluxo__lista { display: flex; flex-direction: column; gap: 3px; margin: 0; }
+.v2-fluxo__lista span {
+  font-family: var(--v2-font-body);
+  font-size: 13px;
+  color: var(--v2-muted);
+  padding: 3px 0;
+  border-bottom: 1px solid var(--v2-line);
+}
+.v2-fluxo__lista span:last-child { border-bottom: none; }
+
+/* caixa da Bedin */
+.v2-fluxo__caixa--bedin {
+  background: var(--v2-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--s5) var(--s4);
+}
+.v2-fluxo__logo {
+  width: 38px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  margin-bottom: 2px;
+}
+.v2-fluxo__caixa--bedin strong {
+  font-family: var(--v2-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.v2-fluxo__caixa--bedin span {
+  font-family: var(--v2-font-body);
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.95);
+  text-align: center;
+}
+
+/* conector com as duas setas */
+.v2-fluxo__conector {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  gap: 4px;
+  padding: 0 var(--s2);
+}
+.v2-fluxo__seta { display: block; height: 2px; position: relative; }
+.v2-fluxo__seta--ida { background: var(--v2-brand); }
+.v2-fluxo__seta--ida::after {
+  content: ''; position: absolute; right: -1px; top: -4px;
+  border-left: 8px solid var(--v2-brand);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+.v2-fluxo__seta--volta { background: var(--v2-deep); margin-top: var(--s5); }
+.v2-fluxo__seta--volta::after {
+  content: ''; position: absolute; left: -1px; top: -4px;
+  border-right: 8px solid var(--v2-deep);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+.v2-fluxo__seta-txt {
+  font-family: var(--v2-font-body);
+  font-size: 11.5px;
+  color: var(--v2-muted);
+  text-align: center;
+  line-height: 1.3;
+}
+.v2-fluxo__seta-txt--volta { color: var(--v2-deep); font-weight: 600; }
+
+/* leque de linhas até as indústrias */
+.v2-fluxo__leque { align-self: stretch; display: flex; }
+.v2-fluxo__leque svg { width: 100%; height: 100%; }
+
+/* indústrias com os logos reais */
+.v2-fluxo__industrias {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--v2-line);
+  border: 1px solid var(--v2-line);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+}
+.v2-fluxo__ind {
+  background: #fff;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s2);
+}
+.v2-fluxo__ind img {
+  max-width: 100%;
+  max-height: 34px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.72;
+}
+.v2-fluxo__ind--mais {
+  font-family: var(--v2-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  /* #5c7a15 dá 4.41 sobre o fundo claro do selo; #557013 passa (5.05) */
+  color: #557013;
+  background: var(--primary-container, #eef5df);
+}
+
+/* o ganho em números */
+.v2-fluxo__ganho {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s4);
+  margin-top: var(--s6);
+}
+.v2-fluxo__ganho-lado {
+  border-radius: 8px;
+  padding: var(--s5) var(--s6);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.v2-fluxo__ganho-lado--antes { background: #fff; border: 1px solid var(--v2-line); }
+.v2-fluxo__ganho-lado--depois { background: var(--v2-deep); }
+.v2-fluxo__ganho-rot {
+  font-family: var(--v2-font-body);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--v2-muted);
+}
+/* sobre o fundo clareado nenhum verde-claro passa (#e3f5bb dá só 4.25);
+   branco dá 4.94 */
+.v2-fluxo__ganho-lado--depois .v2-fluxo__ganho-rot { color: #fff; }
+.v2-fluxo__ganho-lado strong {
+  font-family: var(--v2-font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--v2-ink);
+  line-height: 1.1;
+}
+.v2-fluxo__ganho-lado--depois strong { color: #fff; }
+.v2-fluxo__ganho-lado > span:last-child {
+  font-family: var(--v2-font-body);
+  font-size: 13px;
+  color: var(--v2-muted);
+}
+/* 80% dava 3.81 sobre o fundo clareado; 95% dá 4.64 */
+.v2-fluxo__ganho-lado--depois > span:last-child { color: rgba(255,255,255,0.95); }
+
+/* etapas */
+.v2-fluxo__etapas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s6);
+  list-style: none;
+  margin: var(--s10) 0 0;
+  padding: 0;
+}
+.v2-fluxo__etapas li {
+  display: flex;
+  gap: var(--s4);
+  align-items: flex-start;
+  padding-top: var(--s4);
+  border-top: 2px solid var(--v2-brand);
+}
+.v2-fluxo__n {
+  font-family: var(--v2-font-display);
+  font-size: var(--body-sm);
+  font-weight: 700;
+  color: var(--v2-deep);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.v2-fluxo__etapas h3 { font-size: 16px; font-weight: 700; color: var(--v2-ink); margin-bottom: 4px; }
+.v2-fluxo__etapas p { font-size: var(--body-sm); color: var(--v2-muted); line-height: 1.6; }
+
+@media (max-width: 1000px) {
+  .v2-fluxo__quadro { grid-template-columns: 1fr; gap: var(--s5); padding: var(--s6) var(--s5); }
+  /* empilhado, o fluxo corre de cima para baixo: as setas giram junto */
+  .v2-fluxo__conector {
+    grid-template-rows: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s5);
+    padding: var(--s2) 0;
+  }
+  .v2-fluxo__seta { width: 2px; height: 40px; }
+  .v2-fluxo__seta--ida::after {
+    right: -4px; top: auto; bottom: -7px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid var(--v2-brand);
+    border-bottom: none;
+  }
+  .v2-fluxo__seta--volta { margin-top: 0; }
+  .v2-fluxo__seta--volta::after {
+    left: -4px; top: -7px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid var(--v2-deep);
+    border-right-width: 5px; border-top: none;
+  }
+  .v2-fluxo__leque { display: none; }
+  .v2-fluxo__industrias { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 860px) {
+  .v2-fluxo__etapas { grid-template-columns: 1fr; gap: var(--s5); margin-top: var(--s8); }
+  .v2-fluxo__ganho { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   COBERTURA + exemplo de cotação no WhatsApp
+============================================================ */
+.v2-cobertura { background: var(--v2-surface); border-top: 1px solid var(--v2-line); }
+/* O visual agora é um celular vertical de 300px, não um card largo:
+   o texto fica com a coluna maior. */
+.v2-cobertura__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--s12);
+  align-items: center;
+}
+.v2-cobertura__visual { display: flex; flex-direction: column; align-items: center; }
+.v2-cobertura__texto .label {
+  display: block;
+  font-family: var(--v2-font-display);
+  margin-bottom: var(--s3);
+}
+.v2-cobertura__texto h2 {
+  font-family: var(--v2-font-display);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.7px;
+  color: var(--v2-ink);
+  margin-bottom: var(--s4);
+}
+.v2-cobertura__texto > p {
+  font-size: var(--body-lg);
+  color: var(--v2-muted);
+  line-height: 1.65;
+  margin-bottom: var(--s6);
+}
+.v2-cobertura__dados { margin: 0; border-top: 1px solid var(--v2-line); }
+.v2-cobertura__dados div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--v2-line);
+}
+.v2-cobertura__dados dt { font-size: var(--body-sm); color: var(--v2-muted); }
+.v2-cobertura__dados dd { margin: 0; font-size: var(--body-sm); font-weight: 600; color: var(--v2-ink); }
+
+/* Exemplo de conversa, com a interface do WhatsApp.
+   Cores do app: barra #075E54, balão recebido #FFFFFF, enviado #DCF8C6,
+   fundo #ECE5DD, check de leitura #53BDEB. Identificado como ilustrativo. */
+.v2-zap {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px -10px rgba(28,31,29,0.28);
+  max-width: 460px;
+}
+.v2-zap__barra {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #075E54;
+  padding: 10px 14px;
+}
+.v2-zap__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.v2-zap__avatar img { width: 26px; height: auto; }
+.v2-zap__contato { display: flex; flex-direction: column; line-height: 1.25; }
+.v2-zap__contato strong {
+  font-family: var(--v2-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+.v2-zap__contato em {
+  font-style: normal;
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+}
+
+/* fundo com a textura clara do app */
+.v2-zap__corpo {
+  background: #ECE5DD;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.5) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 70% 65%, rgba(0,0,0,0.035) 0 1.5px, transparent 2px);
+  background-size: 34px 34px, 46px 46px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.v2-zap__linha { display: flex; }
+.v2-zap__linha--loja { justify-content: flex-start; }
+.v2-zap__linha--bedin { justify-content: flex-end; }
+
+.v2-zap__balao {
+  position: relative;
+  max-width: 86%;
+  padding: 7px 9px 5px;
+  border-radius: 8px;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+  font-family: var(--v2-font-body);
+}
+.v2-zap__balao p { font-size: 14.2px; color: #111b21; line-height: 1.4; margin: 0; }
+
+/* as pontinhas que identificam o balão do WhatsApp */
+.v2-zap__balao::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 10px; height: 13px;
+}
+.v2-zap__balao--loja { background: #fff; border-top-left-radius: 0; }
+.v2-zap__balao--loja::before {
+  left: -9px;
+  background: #fff;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+.v2-zap__balao--bedin { background: #DCF8C6; border-top-right-radius: 0; }
+.v2-zap__balao--bedin::before {
+  right: -9px;
+  background: #DCF8C6;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.v2-zap__intro { font-weight: 600; margin-bottom: 6px !important; }
+.v2-zap__balao ul { list-style: none; margin: 0 0 6px; padding: 0; }
+.v2-zap__balao li {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 14.2px;
+  color: #111b21;
+  padding: 3px 0;
+}
+.v2-zap__balao li span:last-child { font-weight: 600; white-space: nowrap; }
+.v2-zap__resumo {
+  font-size: 12.5px !important;
+  color: #5b6b5b !important;
+  padding-top: 6px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin: 0 !important;
+}
+
+/* horário e confirmação de leitura, alinhados à direita como no app */
+.v2-zap__meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  font-size: 11px;
+  /* o app usa #667781; sobre o balão enviado isso dá 4.0:1.
+     #5b6b75 mantém o tom e passa o mínimo de 4.5:1. */
+  color: #5b6b75;
+  margin-top: 2px;
+  line-height: 1;
+}
+.v2-zap__check { width: 15px; height: 11px; color: #53BDEB; }
+
+.v2-zap__nota {
+  background: #fff;
+  border-top: 1px solid var(--v2-line);
+  font-family: var(--v2-font-body);
+  font-size: 12px;
+  color: var(--v2-muted);
+  text-align: center;
+  padding: 10px 14px;
+}
+
+@media (max-width: 900px) {
+  .v2-cobertura__grid { grid-template-columns: 1fr; gap: var(--s8); }
+  .v2-cobertura__texto h2 { font-size: 25px; }
+}
+
+/* ============================================================
+   MOLDURA DE CELULAR — o mercos.com põe o mock do WhatsApp
+   dentro de um aparelho. É a moldura que faz o olho reconhecer
+   a conversa antes de ler qualquer palavra.
+============================================================ */
+/* Como na referência do mercos.com: o aparelho fica sobre um cartão claro
+   e é CORTADO embaixo — entra pela base do cartão em vez de aparecer
+   inteiro. Moldura preta, não prateada. */
+.v2-tel-palco {
+  background: var(--v2-surface-alt);
+  border-radius: 10px;
+  padding: var(--s10) var(--s6) 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+.v2-tel {
+  --tel-larg: 304px;
+  width: var(--tel-larg);
+  margin: 0 auto -58px;   /* corta a base do aparelho */
+  padding: 11px;
+  border-radius: 46px;
+  background: linear-gradient(155deg, #3a3d42 0%, #15171a 30%, #2c2f34 65%, #0e1013 100%);
+  box-shadow:
+    0 28px 55px -20px rgba(28,31,29,0.5),
+    0 2px 4px rgba(28,31,29,0.25);
+}
+.v2-tel__corpo {
+  position: relative;
+  border-radius: 36px;
+  overflow: hidden;
+  background: #ECE5DD;
+}
+/* a ilha / recorte da câmera */
+.v2-tel__ilha {
+  position: absolute;
+  top: 9px; left: 50%;
+  transform: translateX(-50%);
+  width: 84px; height: 25px;
+  border-radius: 999px;
+  background: #0d0d0f;
+  z-index: 3;
+}
+.v2-tel__status {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px 7px;
+  background: #075E54;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.v2-tel__icones { display: inline-flex; align-items: center; gap: 5px; }
+
+/* a conversa dentro do aparelho */
+.v2-zap--tel {
+  border-radius: 0;
+  box-shadow: none;
+  max-width: none;
+}
+.v2-zap--tel .v2-zap__barra { padding-top: 6px; }
+/* mais alto: a base entra no corte do cartão, como na referência */
+.v2-zap--tel .v2-zap__corpo { min-height: 392px; }
+.v2-zap__voltar {
+  color: #fff;
+  font-size: 23px;
+  line-height: 1;
+  margin-right: -2px;
+  opacity: 0.95;
+}
+/* separador "Hoje", como no app */
+.v2-zap__dia { text-align: center; margin-bottom: 12px; }
+.v2-zap__dia span {
+  display: inline-block;
+  background: #fff;
+  color: #5b6b75;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 7px;
+  box-shadow: 0 1px 1px rgba(28,31,29,0.1);
+}
+
+@media (max-width: 600px) {
+  .v2-tel { --tel-larg: 268px; }
+}
+
+/* o rodapé da v2 acompanha o bloco do CTA final */
+.v2 .footer { background: var(--v2-block); }
+
+/* o CTA primário dentro do bloco verde: inverte para fundo branco,
+   senão fica verde sobre verde e perde a hierarquia. */
+.v2 .v2-final__ctas .v2-btn-primary {
+  background: #fff;
+  border-color: #fff;
+  color: #41570e;
+}
+.v2 .v2-final__ctas .v2-btn-primary:hover { background: #f2f2f2; border-color: #f2f2f2; }

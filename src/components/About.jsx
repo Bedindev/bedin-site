@@ -1,44 +1,54 @@
-import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
+const ficha = [
+  { termo: 'Fundação', valor: 'Outubro de 2016' },
+  { termo: 'Sede', valor: 'Biguaçu, SC' },
+  { termo: 'Área de atuação', valor: 'Brasil' },
+  { termo: 'Equipe', valor: '12 profissionais' },
+  { termo: 'Segmento', valor: 'Alimentos naturais' },
+  { termo: 'Indústrias representadas', valor: 'Mais de 30' }
+]
+
 export default function About() {
-  const imgRef = useRef(null)
-  const contentRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target) }
-        })
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -32px 0px' }
-    )
-    if (imgRef.current) observer.observe(imgRef.current)
-    if (contentRef.current) observer.observe(contentRef.current)
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <section className="about section" id="sobre">
       <div className="container">
         <div className="about__grid">
-          <div className="about__img-wrap reveal" ref={imgRef}>
-            <img src="/imagem-familia.webp" alt="Família Bedin" width="424" height="632" />
-            <div className="about__badge">
-              <div className="year-num">2016</div>
-              <div className="year-txt">Outubro de 2016<br />Grande Florianópolis, SC</div>
-            </div>
-          </div>
-          <div className="about__content reveal" ref={contentRef}>
-            <span className="label">Nossa história</span>
-            <h2 className="sec-title">Em 2016, <span className="accent">Jean e Juli começaram com uma decisão</span>: lojista bem atendido vira parceiro pra vida.</h2>
+          <div className="about__content">
+            <span className="label">A empresa</span>
+            <h2 className="sec-title">
+              Uma representação comercial construída <span className="accent">loja a loja, desde 2016</span>.
+            </h2>
             <p className="about__lead">
-              A Bedin nasceu em outubro de 2016, com Jean e Juli prospectando lojistas pela Grande Florianópolis. Dez anos depois somos 12 pessoas no time, com mais de 30 fornecedores parceiros e mais de 200 empresas atendidas todo mês. Não foi sorte. Foi escolha: servir antes de vender.
+              A Bedin Representações foi fundada em outubro de 2016 em Biguaçu, Santa Catarina,
+              atendendo inicialmente lojas da Grande Florianópolis.
+            </p>
+            <p className="about__body">
+              A empresa é administrada pelos sócios fundadores e hoje conta com uma equipe de
+              12 profissionais. A carteira reúne mais de 200 lojas atendidas mensalmente em todo o
+              território nacional, com um portfólio de mais de 30 indústrias do setor de alimentos
+              naturais.
+            </p>
+            <p className="about__body">
+              A seleção de cada fornecedor representado considera três critérios: consistência de
+              qualidade, regularidade de entrega e giro comprovado no varejo natural. É esse
+              filtro que sustenta a nota 4,9 registrada no Google ao longo de dez anos de operação.
             </p>
             <div className="about__cta">
-              <Link to="/sobre" className="btn btn-filled large">Conhecer a história completa →</Link>
+              <Link to="/sobre" className="btn btn-tonal">Conhecer a empresa</Link>
             </div>
+          </div>
+
+          <div className="about__ficha">
+            <h3>Dados da empresa</h3>
+            <dl>
+              {ficha.map(f => (
+                <div key={f.termo}>
+                  <dt>{f.termo}</dt>
+                  <dd>{f.valor}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </div>

@@ -28,27 +28,22 @@ const services = [
   {
     title: 'Cotação de preços',
     text: 'Comparamos produtos, preços, disponibilidade e condições entre diferentes fornecedores para facilitar sua decisão.',
-    icon: <svg {...iconProps}><rect x="3" y="4" width="7" height="16" rx="1.5" /><rect x="14" y="4" width="7" height="16" rx="1.5" /><path d="M6.5 9h0M6.5 13h0M17.5 9h0M17.5 13h0" strokeWidth="2.4" /></svg>,
   },
   {
     title: 'Cotação de frete',
     text: 'Buscamos opções de transporte, custo e prazo para você avaliar a compra completa antes de fechar.',
-    icon: <svg {...iconProps}><rect x="1.5" y="6" width="13" height="10" rx="1.5" /><path d="M14.5 9h4l3 3.5V16h-7z" /><circle cx="6" cy="18" r="2" /><circle cx="18" cy="18" r="2" /></svg>,
   },
   {
     title: 'Organização dos pedidos',
     text: 'Depois da sua escolha, nossa equipe auxilia no encaminhamento das informações e acompanha o andamento com os fornecedores.',
-    icon: <svg {...iconProps}><path d="M4 5h16M4 12h10M4 19h7" /><path d="M17 16l2 2 4-4" /></svg>,
   },
   {
     title: 'Rastreamento e atualizações',
     text: 'Você recebe informações sobre nota fiscal, transportadora, previsão e andamento dos seus pedidos.',
-    icon: <svg {...iconProps}><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" /><rect x="9" y="3" width="6" height="4" rx="1" /><path d="M9 14l2 2 4-4" /></svg>,
   },
   {
     title: 'Suporte pós-venda',
     text: 'Em casos de dúvida, atraso, falta, avaria ou problema comercial, a equipe Bedin acompanha a situação e ajuda na solução.',
-    icon: <svg {...iconProps}><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1.1-4.4A8 8 0 1121 12z" /><path d="M9 12h0M12 12h0M15 12h0" strokeWidth="2.6" /></svg>,
   },
 ]
 
@@ -116,7 +111,7 @@ export default function ComoFunciona() {
                   href={whatsappLink(WA_MESSAGE)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-filled large"
+                  className="btn btn-whatsapp large"
                   onClick={() => trackWhatsApp('como_funciona_hero')}
                 >
                   <WhatsAppIcon />
@@ -127,32 +122,16 @@ export default function ComoFunciona() {
                 </a>
               </div>
             </div>
-            <div className="cf-hero__visual" aria-hidden="true">
-              <div className="mock mock--chat cf-hero__card cf-hero__card--chat">
-                <div className="mock__head"><span className="mock__avatar">L</span><span>Sua lista · WhatsApp</span></div>
-                <div className="mock__bubble">
-                  <ul>
-                    <li>Chia · 20 kg</li>
-                    <li>Uva-passa · 30 kg</li>
-                    <li>Castanha-de-caju · 10 kg</li>
-                  </ul>
-                  <span className="mock__sent">Enviado ✓✓</span>
-                </div>
-              </div>
-              <div className="mock mock--status cf-hero__card cf-hero__card--result">
-                <div className="mock__head"><span className="mock__avatar mock__avatar--bedin">B</span><span>Retorno da Bedin</span></div>
-                <ul className="mock__checks">
-                  <li className="is-done"><svg {...iconProps} strokeWidth="2.4"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>Fornecedores comparados</li>
-                  <li className="is-done"><svg {...iconProps} strokeWidth="2.4"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>Frete consultado</li>
-                  <li className="is-current"><span className="mock__dot" />Pedido acompanhado</li>
-                </ul>
-              </div>
+            <div className="cf-hero__visual">
+              <ol className="cf-hero__resumo">
+                {JORNADA_STEPS.map((step, i) => (
+                  <li key={step.id}>
+                    <span className="cf-hero__resumo-num">{i + 1}</span>
+                    <span className="cf-hero__resumo-txt">{step.title}</span>
+                  </li>
+                ))}
+              </ol>
             </div>
-          </div>
-          <div className="hero__wave" aria-hidden="true">
-            <svg viewBox="0 0 1440 64" preserveAspectRatio="none">
-              <path d="M0,32 C480,64 960,0 1440,32 L1440,64 L0,64 Z" fill="#f9f9f7" />
-            </svg>
           </div>
         </section>
 
@@ -206,11 +185,8 @@ export default function ComoFunciona() {
             <Reveal as="ol" className="services__list">
               {services.map(s => (
                 <li key={s.title} className="services__item">
-                  <span className="services__icon">{s.icon}</span>
-                  <div>
-                    <h3>{s.title}</h3>
-                    <p>{s.text}</p>
-                  </div>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
                 </li>
               ))}
             </Reveal>
@@ -219,21 +195,6 @@ export default function ComoFunciona() {
 
         <section className="tech section" aria-labelledby="tech-title">
           <div className="container tech__grid">
-            <Reveal className="tech__visual" aria-hidden="true">
-              <div className="tech__board">
-                <div className="tech__board-head">Nos bastidores da Bedin</div>
-                <ul>
-                  <li><span className="tech__dot" />Tabelas organizadas</li>
-                  <li><span className="tech__dot" />Cotações agilizadas</li>
-                  <li><span className="tech__dot" />Fretes consultados</li>
-                  <li><span className="tech__dot" />Pedidos acompanhados</li>
-                </ul>
-              </div>
-              <div className="tech__chat">
-                <span className="tech__chat-icon"><WhatsAppIcon size={16} /></span>
-                <span>Você continua falando com a nossa equipe</span>
-              </div>
-            </Reveal>
             <Reveal className="tech__content">
               <span className="label">Bastidores</span>
               <h2 className="sec-title" id="tech-title">

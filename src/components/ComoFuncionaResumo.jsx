@@ -13,9 +13,9 @@ export default function ComoFuncionaResumo() {
             Da cotação à entrega, <span className="accent">a Bedin cuida de cada etapa</span>.
           </h2>
           <p className="sec-sub">
-            Você envia sua lista uma única vez. A Bedin compara opções entre fornecedores, ajuda com o frete, acompanha seus pedidos e continua ao seu lado até a entrega.
+            A lista é enviada uma única vez. A Bedin compara as condições entre os fornecedores, organiza o frete, acompanha o pedido e responde pela entrega.
           </p>
-          <Link to="/como-funciona" className="btn btn-filled large resumo__cta">
+          <Link to="/como-funciona" className="btn btn-tonal resumo__cta">
             Conheça nosso atendimento completo
           </Link>
         </Reveal>

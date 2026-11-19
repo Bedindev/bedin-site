@@ -17,6 +17,8 @@ import Sobre from './pages/Sobre.jsx'
 import ComoFunciona from './pages/ComoFunciona.jsx'
 import Privacidade from './pages/Privacidade.jsx'
 import CookieBanner from './components/CookieBanner.jsx'
+import V2 from './pages/V2.jsx'
+import './v2.css'
 
 // Client-side navigations keep the previous scroll position; the browser only
 // handles the initial load. Skip the first render so reload restoration still works.
@@ -70,10 +72,14 @@ function App() {
     <BrowserRouter>
       <ScrollManager />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* A versão retrofitada passou a ser a home. A anterior continua
+            acessível em /v1 para comparação e rollback rápido. */}
+        <Route path="/" element={<V2 />} />
+        <Route path="/v1" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/como-funciona" element={<ComoFunciona />} />
         <Route path="/politica-de-privacidade" element={<Privacidade />} />
+        <Route path="/v2" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Analytics />

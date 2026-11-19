@@ -97,7 +97,7 @@ describe('/como-funciona', () => {
     renderAt('/como-funciona')
     const stats = document.querySelector('.stats')
     expect(stats).toBeInTheDocument()
-    ;['Nota no Google', 'Produtos no catálogo', 'Fornecedores parceiros', 'Empresas atendidas todo mês']
+    ;['Nota no Google', 'Itens ativos em catálogo', 'Indústrias representadas', 'Lojas atendidas']
       .forEach(label => expect(within(stats).getByText(new RegExp(label))).toBeInTheDocument())
     expect(within(stats).getByText('4,9')).toBeInTheDocument()
     expect(document.querySelectorAll('.stats')).toHaveLength(1)

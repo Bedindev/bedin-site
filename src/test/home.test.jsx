@@ -8,23 +8,25 @@ function renderAt(path) {
   return render(<App />)
 }
 
+/* A versão retrofitada virou a home (rota /). A home anterior continua
+   em /v1, que é o que estes testes verificam. */
 describe('home and existing pages', () => {
   it('replaces the secondary hero CTA with a link to /como-funciona and keeps only two CTAs', () => {
-    renderAt('/')
+    renderAt('/v1')
     const ctas = document.querySelector('.hero__ctas')
     expect(ctas.querySelectorAll('a')).toHaveLength(2)
-    expect(within(ctas).getByRole('link', { name: 'Entender como funciona' })).toHaveAttribute('href', '/como-funciona')
-    expect(within(ctas).getByRole('link', { name: /Falar com a Bedin no WhatsApp/ })).toHaveAttribute('href', expect.stringContaining('wa.me/5548998680025'))
+    expect(within(ctas).getByRole('link', { name: 'Como trabalhamos' })).toHaveAttribute('href', '/como-funciona')
+    expect(within(ctas).getByRole('link', { name: /Solicitar cotação/ })).toHaveAttribute('href', expect.stringContaining('wa.me/5548998680025'))
   })
 
   it('adds "Como funciona" to the home header, internal headers and the footer', () => {
-    renderAt('/')
+    renderAt('/v1')
     expect(within(screen.getByRole('banner')).getByRole('link', { name: 'Como funciona' })).toHaveAttribute('href', '/como-funciona')
     expect(within(screen.getByRole('contentinfo')).getByRole('link', { name: 'Como funciona' })).toHaveAttribute('href', '/como-funciona')
   })
 
   it('shows the compact summary with four steps and a CTA to the dedicated page', () => {
-    renderAt('/')
+    renderAt('/v1')
     expect(screen.getByRole('heading', { name: /Da cotação à entrega, a Bedin cuida de cada etapa/ })).toBeInTheDocument()
     const steps = screen.getByRole('list', { name: 'Etapas resumidas' })
     expect(within(steps).getAllByRole('listitem').map(li => li.textContent)).toEqual([
@@ -34,8 +36,8 @@ describe('home and existing pages', () => {
   })
 
   it('keeps every existing WhatsApp event and the quotation form intact', () => {
-    renderAt('/')
-    fireEvent.click(screen.getByRole('link', { name: /Falar com a Bedin no WhatsApp/ }))
+    renderAt('/v1')
+    fireEvent.click(within(document.querySelector('.hero__ctas')).getByRole('link', { name: /Solicitar cotação/ }))
     fireEvent.click(screen.getByRole('link', { name: /Falar agora/ }))
     fireEvent.click(screen.getByRole('link', { name: 'WhatsApp' }))
     const labels = window.gtag.mock.calls.map(c => c[2].event_label)
