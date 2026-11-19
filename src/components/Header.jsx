@@ -63,8 +63,6 @@ export default function Header({ acesso = null }) {
             </>
           ) : isHome ? (
             <>
-              <Link to="/sobre" onClick={closeMenu}>Sobre nós</Link>
-              <Link to="/como-funciona" onClick={closeMenu}>Como funciona</Link>
               <a href="#produtos" onClick={e => handleNavClick(e, '#produtos')}>Produtos</a>
               <a href="#diferenciais" onClick={e => handleNavClick(e, '#diferenciais')}>Diferenciais</a>
               <a href="#cotacao" onClick={e => handleNavClick(e, '#cotacao')}>Cotação</a>
@@ -72,8 +70,6 @@ export default function Header({ acesso = null }) {
           ) : (
             <>
               <Link to="/" onClick={closeMenu}>Início</Link>
-              <Link to="/sobre" onClick={closeMenu} aria-current={current('/sobre')}>Sobre nós</Link>
-              <Link to="/como-funciona" onClick={closeMenu} aria-current={current('/como-funciona')}>Como funciona</Link>
               <Link to="/#cotacao" onClick={closeMenu}>Cotação</Link>
             </>
           )}

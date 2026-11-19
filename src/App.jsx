@@ -13,8 +13,6 @@ import Reviews from './components/Reviews.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import WhatsAppFloat from './components/WhatsAppFloat.jsx'
-import Sobre from './pages/Sobre.jsx'
-import ComoFunciona from './pages/ComoFunciona.jsx'
 import Privacidade from './pages/Privacidade.jsx'
 import CookieBanner from './components/CookieBanner.jsx'
 import V2 from './pages/V2.jsx'
@@ -76,9 +74,13 @@ function App() {
             acessível em /v1 para comparação e rollback rápido. */}
         <Route path="/" element={<V2 />} />
         <Route path="/v1" element={<Home />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/como-funciona" element={<ComoFunciona />} />
         <Route path="/politica-de-privacidade" element={<Privacidade />} />
+        {/* "Sobre nós" e "Como funciona" saíram do site. As URLs continuam
+            redirecionando para a home: as duas estavam no sitemap e indexadas
+            (a de como-funciona com prioridade 0.9), então apagá-las geraria
+            404 para quem chega pelo Google ou por link antigo. */}
+        <Route path="/sobre" element={<Navigate to="/" replace />} />
+        <Route path="/como-funciona" element={<Navigate to="/" replace />} />
         <Route path="/v2" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

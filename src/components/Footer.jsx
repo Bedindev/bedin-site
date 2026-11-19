@@ -39,10 +39,9 @@ export default function Footer() {
           <div className="footer__col">
             <h3>Navegação</h3>
             <ul>
-              <li><a href="#sobre">A empresa</a></li>
-              <li><Link to="/como-funciona">Como funciona</Link></li>
-              <li><a href="#produtos">Produtos</a></li>
-              <li><a href="#diferenciais">O que a representação cobre</a></li>
+              <li><a href="#fornecedores">Fornecedores</a></li>
+              <li><a href="#depoimentos">Depoimentos</a></li>
+              <li><a href="#faq">Dúvidas</a></li>
               <li><a href="#cotacao">Solicitar cotação</a></li>
             </ul>
           </div>

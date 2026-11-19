@@ -1,17 +1,80 @@
 {
   "redirects": [
-    { "source": "/contato", "destination": "/#cotacao", "permanent": true },
-    { "source": "/contato/", "destination": "/#cotacao", "permanent": true },
-    { "source": "/seja-nosso-cliente", "destination": "/#cotacao", "permanent": true },
-    { "source": "/seja-nosso-cliente/", "destination": "/#cotacao", "permanent": true },
-    { "source": "/sobre-nos", "destination": "/sobre", "permanent": true },
-    { "source": "/sobre-nos/", "destination": "/sobre", "permanent": true },
-    { "source": "/instituto-bedin", "destination": "/sobre", "permanent": true },
-    { "source": "/instituto-bedin/", "destination": "/sobre", "permanent": true },
-    { "source": "/blog", "destination": "https://blog.bedinrepresentacao.com.br", "permanent": false },
-    { "source": "/blog/:path*", "destination": "https://blog.bedinrepresentacao.com.br/:path*", "permanent": false }
+    {
+      "source": "/contato",
+      "destination": "/#cotacao",
+      "permanent": true
+    },
+    {
+      "source": "/contato/",
+      "destination": "/#cotacao",
+      "permanent": true
+    },
+    {
+      "source": "/seja-nosso-cliente",
+      "destination": "/#cotacao",
+      "permanent": true
+    },
+    {
+      "source": "/seja-nosso-cliente/",
+      "destination": "/#cotacao",
+      "permanent": true
+    },
+    {
+      "source": "/sobre-nos",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sobre-nos/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/instituto-bedin",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/instituto-bedin/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "https://blog.bedinrepresentacao.com.br",
+      "permanent": false
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "https://blog.bedinrepresentacao.com.br/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/sobre",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sobre/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/como-funciona",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/como-funciona/",
+      "destination": "/",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
