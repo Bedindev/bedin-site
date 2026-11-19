@@ -25,21 +25,26 @@ export default function Footer() {
           <div className="footer__col">
             <h4>Navegação</h4>
             <ul>
-              <li><a href="https://www.bedinrepresentacao.com.br/#sobre">Sobre a família Bedin</a></li>
-              <li><a href="https://www.bedinrepresentacao.com.br/#produtos">Produtos</a></li>
-              <li><a href="https://www.bedinrepresentacao.com.br/#diferenciais">Por que nos escolher</a></li>
+              {/* #sobre, #produtos e #diferenciais não existem mais na home:
+                  apontavam para âncoras mortas e caíam no topo da página. */}
+              <li><a href="https://www.bedinrepresentacao.com.br/">Início</a></li>
+              <li><a href="https://www.bedinrepresentacao.com.br/#fornecedores">Fornecedores</a></li>
+              <li><a href="https://www.bedinrepresentacao.com.br/#depoimentos">Depoimentos</a></li>
+              <li><a href="https://www.bedinrepresentacao.com.br/#faq">Dúvidas</a></li>
               <li><a href="https://www.bedinrepresentacao.com.br/#cotacao">Pedir cotação</a></li>
-              <li><a href="/blog">Blog</a></li>
             </ul>
           </div>
           <div className="footer__col">
-            <h4>Categorias</h4>
+            <h4>Categorias do catálogo</h4>
+            {/* eram 5 links para a mesma âncora inexistente (#produtos).
+                O filtro do blog é estado interno e não lê a URL, então
+                estes levam ao catálogo na home, onde as categorias estão. */}
             <ul>
-              <li><a href="https://www.bedinrepresentacao.com.br/#produtos">Frutas Secas</a></li>
-              <li><a href="https://www.bedinrepresentacao.com.br/#produtos">Especiarias</a></li>
-              <li><a href="https://www.bedinrepresentacao.com.br/#produtos">Grãos</a></li>
-              <li><a href="https://www.bedinrepresentacao.com.br/#produtos">Sementes</a></li>
-              <li><a href="https://www.bedinrepresentacao.com.br/#produtos">Chás &amp; Drageados</a></li>
+              <li><a href="https://www.bedinrepresentacao.com.br/">Frutas secas</a></li>
+              <li><a href="https://www.bedinrepresentacao.com.br/">Especiarias</a></li>
+              <li><a href="https://www.bedinrepresentacao.com.br/">Grãos e sementes</a></li>
+              <li><a href="https://www.bedinrepresentacao.com.br/">Chás e drageados</a></li>
+              <li><a href="https://www.bedinrepresentacao.com.br/#cotacao">Ver catálogo completo</a></li>
             </ul>
           </div>
           <div className="footer__col">

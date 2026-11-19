@@ -30,8 +30,11 @@ export default function Header() {
           <img src="/logo vetorizado Bedin.png" alt="Bedin Representação" height={40} />
         </a>
         <nav className={`header__nav${menuOpen ? ' open' : ''}`}>
+          {/* "Sobre nós" saiu: a página foi removida do site e a URL só
+              redireciona. O menu acompanha as seções da home. */}
           <a href="https://www.bedinrepresentacao.com.br" onClick={closeMenu}>Início</a>
-          <a href="https://www.bedinrepresentacao.com.br/sobre" onClick={closeMenu}>Sobre nós</a>
+          <a href="https://www.bedinrepresentacao.com.br/#fornecedores" onClick={closeMenu}>Fornecedores</a>
+          <a href="https://www.bedinrepresentacao.com.br/#depoimentos" onClick={closeMenu}>Depoimentos</a>
           <a href="/" onClick={closeMenu}>Blog</a>
           <a href="https://www.bedinrepresentacao.com.br/#cotacao" onClick={closeMenu}>Cotação</a>
         </nav>
