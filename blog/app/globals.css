@@ -248,7 +248,99 @@ ul { list-style: none; padding: 0; margin: 0; }
 .blog-back { color: var(--accent); text-decoration: none; font-size: var(--body-md); font-weight: 600; display: inline-block; margin-bottom: var(--s6); }
 .blog-back:hover { text-decoration: underline; }
 .blog-post-wrap h1 { font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; color: var(--text-1); margin: var(--s4) 0 var(--s2); line-height: 1.17; letter-spacing: -0.02em; }
-.blog-post__meta { color: var(--text-2); font-size: var(--body-sm); margin-bottom: var(--s8); }
+/* ---- cabeçalho do artigo ----
+   O reset global zera margin/padding de tudo, e estas classes não tinham
+   regra nenhuma: a meta saía grudada ("Gestao de Loja16 de novembro..."),
+   o breadcrumb virava lista numerada e o texto colava no cabeçalho. */
+.blog-post__header { margin-bottom: var(--s6); }
+.blog-post__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3);
+  color: var(--text-2);
+  font-size: var(--body-sm);
+  margin-bottom: var(--s4);
+}
+/* o chip já se distingue sozinho: o separador vale a partir do 2º item */
+.blog-post__meta > *:not(.category-chip) + *::before {
+  content: '·';
+  margin-right: var(--s3);
+  color: var(--outline-variant);
+}
+
+/* chip de categoria — não tinha regra nenhuma e saía como texto solto */
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--s1) var(--s3);
+  border-radius: 4px;
+  font-size: var(--label-md);
+  font-weight: 600;
+  line-height: 1.6;
+  background: var(--accent-light);
+  color: #557013;
+}
+.category-chip--amber    { background: #fdf3df; color: #7a5200; }
+.category-chip--slate    { background: #eef1f4; color: #41525f; }
+.category-chip--forest   { background: #e6f0e3; color: #2f5233; }
+.category-chip--terracota{ background: #fbeee7; color: #8a4523; }
+
+/* trilha horizontal, não lista numerada */
+.blog-breadcrumb { margin-bottom: var(--s8); }
+.blog-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--body-sm);
+  color: var(--text-2);
+}
+.blog-breadcrumb li { display: flex; align-items: center; gap: var(--s2); }
+.blog-breadcrumb li + li::before { content: '›'; color: var(--outline-variant); }
+.blog-breadcrumb a { color: var(--brand-text); font-weight: 600; }
+.blog-breadcrumb a:hover { text-decoration: underline; }
+.blog-breadcrumb [aria-current='page'] {
+  color: var(--text-2);
+  max-width: 34ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- CTA no fim do artigo ---- */
+.blog-post__cta {
+  background: var(--brand-deep);
+  color: #fff;
+  text-align: center;
+  padding: var(--s16) 0;
+  margin-top: var(--s16);
+}
+.blog-post__cta h2 {
+  font-family: var(--font-display);
+  font-size: var(--display-sm);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--s3);
+  color: #fff;
+}
+.blog-post__cta p { margin-bottom: var(--s6); color: #fff; }
+.blog-post__cta-button {
+  background: #fff;
+  color: #41570e;
+  border: 1px solid #fff;
+  padding: var(--btn-pad);
+  font-weight: 600;
+}
+.blog-post__cta-button:hover { background: #f2f2f2; border-color: #f2f2f2; }
+
+@media (max-width: 600px) {
+  .blog-post__cta { padding: var(--s12) 0; }
+  .blog-breadcrumb [aria-current='page'] { max-width: 20ch; }
+}
 .blog-post__content { font-size: 1.05rem; line-height: 1.8; color: var(--text-1); }
 .blog-post__content h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin: var(--s8) 0 var(--s3); }
 .blog-post__content h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: var(--s6) 0 var(--s2); }
